@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#2555d9" />
+  <meta name="description" content="Penny 的无拼写西班牙语互动练习：听音、认词、读句和情境对话。" />
+  <title>Penny 的西语小站</title>
+  <style>
+    :root {
+      --ink: #172240;
+      --muted: #65708c;
+      --blue: #2555d9;
+      --blue-dark: #183ca7;
+      --blue-soft: #eef3ff;
+      --orange: #ff9c3d;
+      --mint: #24a77e;
+      --red: #db4a5d;
+      --paper: #ffffff;
+      --line: #dfe5f2;
+      --shadow: 0 18px 60px rgba(27, 54, 120, .14);
+    }
+
+    * { box-sizing: border-box; }
+    html { font-size: 16px; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 3%, rgba(255, 173, 91, .22), transparent 25rem),
+        radial-gradient(circle at 95% 14%, rgba(54, 112, 255, .18), transparent 28rem),
+        #f7f9fe;
+      font-family: ui-rounded, "SF Pro Rounded", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+    }
+
+    button { font: inherit; }
+    button:focus-visible { outline: 4px solid rgba(37, 85, 217, .2); outline-offset: 3px; }
+
+    .shell { width: min(100% - 28px, 1120px); margin: 0 auto; }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 0 14px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 900; font-size: 1.08rem; }
+    .brand-mark {
+      width: 42px; height: 42px; display: grid; place-items: center;
+      color: white; background: var(--blue); border-radius: 14px 14px 14px 5px;
+      box-shadow: 0 8px 18px rgba(37, 85, 217, .24);
+    }
+    .stats { display: flex; gap: 10px; }
+    .stat {
+      display: flex; align-items: center; gap: 7px;
+      padding: 9px 12px; border: 1px solid var(--line); border-radius: 999px;
+      background: rgba(255,255,255,.78); font-weight: 800; font-size: .9rem;
+    }
+
+    main { padding: 14px 0 38px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 292px; gap: 24px; align-items: start; }
+    .lesson {
+      background: var(--paper); border: 1px solid var(--line); border-radius: 30px;
+      padding: clamp(22px, 5vw, 46px); box-shadow: var(--shadow); min-height: 620px;
+      display: flex; flex-direction: column;
+    }
+    .progress-row { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+    .progress-track { height: 12px; flex: 1; background: #e9edf7; border-radius: 999px; overflow: hidden; }
+    .progress-fill { height: 100%; width: 8%; border-radius: inherit; background: linear-gradient(90deg, var(--orange), #ffbd55); transition: width .35s ease; }
+    .progress-label { color: var(--muted); font-size: .85rem; font-weight: 800; min-width: 47px; text-align: right; }
+    .eyebrow { color: var(--blue); font-size: .82rem; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
+    h1 { margin: 8px 0 8px; font-size: clamp(1.65rem, 4vw, 2.5rem); line-height: 1.18; letter-spacing: -.04em; }
+    .hint { margin: 0; color: var(--muted); line-height: 1.65; }
+
+    .prompt-wrap { flex: 1; display: grid; align-content: center; padding: 32px 0 26px; }
+    .listen-card { display: flex; align-items: center; gap: 18px; }
+    .sound-btn {
+      width: 82px; height: 82px; flex: 0 0 auto; border: 0; border-radius: 25px;
+      color: white; background: var(--blue); cursor: pointer; box-shadow: 0 9px 0 var(--blue-dark);
+      display: grid; place-items: center; transition: transform .12s, box-shadow .12s;
+    }
+    .sound-btn:active { transform: translateY(6px); box-shadow: 0 3px 0 var(--blue-dark); }
+    .sound-btn svg { width: 34px; }
+    .slow-btn {
+      margin-top: 16px; border: 1px solid #cbd7fb; background: var(--blue-soft); color: var(--blue-dark);
+      border-radius: 12px; padding: 9px 13px; font-weight: 800; cursor: pointer;
+    }
+    .prompt-text { font-size: clamp(1.55rem, 5vw, 2.55rem); font-weight: 900; letter-spacing: -.02em; line-height: 1.3; }
+    .prompt-context { margin-bottom: 10px; color: var(--muted); font-weight: 750; }
+    .speaker-line { display: flex; align-items: flex-start; gap: 12px; }
+    .avatar { width: 39px; height: 39px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 13px; background: #fff0dc; }
+
+    .answers { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .answer {
+      min-height: 64px; padding: 14px 16px; text-align: left; color: var(--ink);
+      border: 2px solid var(--line); border-bottom-width: 5px; border-radius: 17px;
+      background: white; cursor: pointer; font-weight: 780; line-height: 1.35;
+      transition: border-color .15s, background .15s, transform .12s;
+    }
+    .answer:hover:not(:disabled) { border-color: #9db3f2; background: #f7f9ff; transform: translateY(-1px); }
+    .answer.selected { border-color: var(--blue); background: var(--blue-soft); }
+    .answer.correct { border-color: var(--mint); background: #ecfbf5; color: #16765b; }
+    .answer.wrong { border-color: var(--red); background: #fff0f2; color: #a72e40; }
+    .answer:disabled { cursor: default; }
+
+    .feedback {
+      display: none; margin-top: 20px; padding: 18px; border-radius: 18px;
+      align-items: center; justify-content: space-between; gap: 18px;
+    }
+    .feedback.show { display: flex; }
+    .feedback.good { background: #eafaf4; color: #176e56; }
+    .feedback.bad { background: #fff0f2; color: #9e3041; }
+    .feedback strong { display: block; font-size: 1.05rem; margin-bottom: 3px; }
+    .feedback small { font-size: .88rem; line-height: 1.45; }
+    .next-btn {
+      border: 0; border-radius: 14px; padding: 12px 20px; color: white; background: currentColor;
+      cursor: pointer; font-weight: 900; white-space: nowrap;
+    }
+    .next-btn span { color: white; }
+
+    aside { display: grid; gap: 16px; }
+    .side-card { padding: 20px; border: 1px solid var(--line); border-radius: 22px; background: rgba(255,255,255,.86); }
+    .side-card h2 { font-size: 1rem; margin: 0 0 14px; }
+    .mode-list { display: grid; gap: 9px; }
+    .mode {
+      display: flex; gap: 10px; align-items: center; padding: 11px; border-radius: 14px;
+      color: var(--muted); font-size: .9rem; font-weight: 750;
+    }
+    .mode.active { background: var(--blue-soft); color: var(--blue-dark); }
+    .mode.done { color: #198064; }
+    .mode-icon { width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center; background: white; }
+    .note { font-size: .88rem; color: var(--muted); line-height: 1.6; margin: 0; }
+    .reset-btn { width: 100%; margin-top: 12px; border: 0; background: transparent; color: var(--muted); font-weight: 800; cursor: pointer; padding: 8px; }
+
+    .finish { display: none; flex: 1; text-align: center; align-items: center; justify-content: center; flex-direction: column; }
+    .finish.show { display: flex; }
+    .finish-badge { width: 92px; height: 92px; display: grid; place-items: center; border-radius: 28px; background: #fff0dc; font-size: 2.6rem; transform: rotate(-5deg); }
+    .finish h2 { font-size: 2rem; margin: 22px 0 8px; }
+    .finish p { color: var(--muted); margin: 0 0 24px; }
+    .restart-btn { border: 0; border-radius: 16px; padding: 14px 25px; background: var(--blue); color: white; font-weight: 900; cursor: pointer; box-shadow: 0 6px 0 var(--blue-dark); }
+
+    @media (max-width: 820px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { grid-template-columns: 1fr 1fr; }
+      .lesson { min-height: 600px; }
+    }
+    @media (max-width: 560px) {
+      .shell { width: min(100% - 18px, 1120px); }
+      header { padding-top: 13px; }
+      .brand span:last-child { display: none; }
+      .stats .stat:first-child { display: none; }
+      .lesson { border-radius: 23px; padding: 20px; min-height: calc(100vh - 100px); }
+      .answers { grid-template-columns: 1fr; }
+      .listen-card { flex-direction: column; align-items: flex-start; }
+      .feedback { align-items: stretch; flex-direction: column; }
+      .next-btn { width: 100%; }
+      aside { grid-template-columns: 1fr; }
+      .prompt-wrap { padding-top: 25px; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="brand"><div class="brand-mark">¡P!</div><span>Penny 的西语小站</span></div>
+      <div class="stats">
+        <div class="stat" title="连续练习天数">🔥 <span id="streak">1</span> 天</div>
+        <div class="stat" title="累计经验值">⚡ <span id="xp">0</span> XP</div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="lesson" aria-live="polite">
+        <div id="lessonView">
+          <div class="progress-row">
+            <div class="progress-track" role="progressbar" aria-label="本轮进度" aria-valuemin="0" aria-valuemax="100"><div class="progress-fill" id="progressFill"></div></div>
+            <div class="progress-label" id="progressLabel">1 / 10</div>
+          </div>
+          <div class="eyebrow" id="typeLabel">听音选义</div>
+          <h1 id="questionTitle">你听到了什么？</h1>
+          <p class="hint" id="questionHint">点蓝色按钮播放，可以慢速再听一次。</p>
+
+          <div class="prompt-wrap" id="promptWrap"></div>
+          <div class="answers" id="answers"></div>
+          <div class="feedback" id="feedback">
+            <div><strong id="feedbackTitle"></strong><small id="feedbackText"></small></div>
+            <button class="next-btn" id="nextBtn"><span>继续</span></button>
+          </div>
+        </div>
+
+        <div class="finish" id="finishView">
+          <div class="finish-badge">🌞</div>
+          <h2>¡Muy bien!</h2>
+          <p id="finishText">这轮完成啦。</p>
+          <button class="restart-btn" id="restartBtn">再来一轮</button>
+        </div>
+      </section>
+
+      <aside>
+        <div class="side-card">
+          <h2>今天的 10 题</h2>
+          <div class="mode-list">
+            <div class="mode active" data-mode="listen"><span class="mode-icon">🔊</span><span>听音选义</span></div>
+            <div class="mode" data-mode="word"><span class="mode-icon">👀</span><span>看词认义</span></div>
+            <div class="mode" data-mode="sentence"><span class="mode-icon">📖</span><span>读懂短句</span></div>
+            <div class="mode" data-mode="dialogue"><span class="mode-icon">💬</span><span>情境对话</span></div>
+          </div>
+        </div>
+        <div class="side-card">
+          <h2>你的学习规则</h2>
+          <p class="note">不做拼写、不扣爱心。选错会立刻解释，而且这道题会在后面再见一次。</p>
+          <button class="reset-btn" id="resetBtn">重置本机进度</button>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    const lessons = [
+      { type:'listen', prompt:'Hola', answer:'你好', choices:['你好','谢谢','晚安','再见'], note:'Hola 是最常用的“你好”。' },
+      { type:'word', prompt:'gracias', answer:'谢谢', choices:['请','谢谢','对不起','没关系'], note:'Gracias 表示“谢谢”。' },
+      { type:'sentence', prompt:'Me llamo Penny.', answer:'我叫 Penny。', choices:['我是学生。','我叫 Penny。','我来自武汉。','我很好。'], note:'Me llamo… 用来介绍自己的名字。' },
+      { type:'dialogue', context:'别人问：¿Cómo estás?（你好吗？）', prompt:'你想回答“我很好，谢谢”。', answer:'Muy bien, gracias.', choices:['Muy bien, gracias.','Me llamo Penny.','Hasta luego.','No entiendo.'], note:'Muy bien 是“很好”，gracias 是“谢谢”。' },
+      { type:'listen', prompt:'Buenos días', answer:'早上好', choices:['下午好','早上好','晚安','明天见'], note:'Buenos días 通常在上午使用。' },
+      { type:'word', prompt:'agua', answer:'水', choices:['咖啡','水','面包','牛奶'], note:'Agua 是“水”。虽然以 a 开头，它仍然是阴性名词。' },
+      { type:'sentence', prompt:'Quiero un café.', answer:'我想要一杯咖啡。', choices:['我喜欢咖啡。','我想要一杯咖啡。','咖啡多少钱？','我不要咖啡。'], note:'Quiero… 是旅行和点餐时非常实用的“我想要……”。' },
+      { type:'dialogue', context:'在咖啡店，店员问你想要什么。', prompt:'选出最自然的回答。', answer:'Quiero un café, por favor.', choices:['Quiero un café, por favor.','Soy un café.','Hola café.','Gracias quiero.'], note:'点单可以说 Quiero…，加 por favor 更礼貌。' },
+      { type:'listen', prompt:'Hasta luego', answer:'回头见', choices:['欢迎','回头见','请进','早上好'], note:'Hasta luego 是常见的告别语，相当于“回头见”。' },
+      { type:'sentence', prompt:'No entiendo.', answer:'我不明白。', choices:['我不知道。','我不明白。','我不喜欢。','我没听见。'], note:'听不懂时直接说 No entiendo 很实用。' },
+      { type:'word', prompt:'amiga', answer:'女性朋友', choices:['母亲','姐妹','女性朋友','老师'], note:'Amiga 指女性朋友；男性朋友是 amigo。' },
+      { type:'dialogue', context:'第一次见面，对方说：Mucho gusto.', prompt:'你可以怎样回应？', answer:'Igualmente.', choices:['Igualmente.','De nada.','Lo siento.','Buenas noches.'], note:'Igualmente 在这里表示“我也很高兴认识你”。' }
+    ];
+
+    const labels = {
+      listen: ['听音选义','你听到了什么？','点蓝色按钮播放，可以慢速再听一次。'],
+      word: ['看词认义','这个词是什么意思？','先凭直觉选择，答错不会扣爱心。'],
+      sentence: ['读懂短句','选出最准确的意思','不用逐词翻译，先抓住整句话。'],
+      dialogue: ['情境对话','在这个情境中怎么说？','选择最自然、最合适的回应。']
+    };
+
+    const state = { queue: [], index: 0, correct: 0, locked: false, roundXp: 0 };
+    const $ = (id) => document.getElementById(id);
+    const saved = JSON.parse(localStorage.getItem('pennySpanishProgress') || '{}');
+    let totalXp = Number(saved.xp || 0);
+    $('xp').textContent = totalXp;
+    $('streak').textContent = Number(saved.streak || 1);
+
+    function shuffle(items) {
+      const copy = [...items];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function startRound() {
+      state.queue = shuffle(lessons).slice(0, 10).map((q, i) => ({...q, key: Date.now() + i, retry:false}));
+      state.index = 0; state.correct = 0; state.locked = false; state.roundXp = 0;
+      $('finishView').classList.remove('show');
+      $('lessonView').style.display = 'block';
+      renderQuestion();
+    }
+
+    function speak(text, rate = .88) {
+      if (!('speechSynthesis' in window)) return;
+      speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'es-ES'; utterance.rate = rate; utterance.pitch = 1;
+      const voices = speechSynthesis.getVoices();
+      const voice = voices.find(v => v.lang.toLowerCase().startsWith('es'));
+      if (voice) utterance.voice = voice;
+      speechSynthesis.speak(utterance);
+    }
+
+    function promptMarkup(q) {
+      const soundIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18 6a8.5 8.5 0 0 1 0 12"/></svg>';
+      if (q.type === 'listen') return `<div class="listen-card"><button class="sound-btn" id="soundBtn" aria-label="播放西班牙语发音">${soundIcon}</button><div><div class="prompt-context">点击播放西语</div><button class="slow-btn" id="slowBtn">🐢 慢速播放</button></div></div>`;
+      if (q.type === 'dialogue') return `<div><div class="prompt-context">${q.context}</div><div class="speaker-line"><div class="avatar">👩🏻</div><div class="prompt-text">${q.prompt}</div></div></div>`;
+      return `<div class="prompt-text">${q.prompt}</div>`;
+    }
+
+    function renderQuestion() {
+      const q = state.queue[state.index];
+      if (!q) return finishRound();
+      state.locked = false;
+      const [type, title, hint] = labels[q.type];
+      $('typeLabel').textContent = q.retry ? `${type} · 再见一次` : type;
+      $('questionTitle').textContent = title;
+      $('questionHint').textContent = hint;
+      $('promptWrap').innerHTML = promptMarkup(q);
+      $('answers').innerHTML = '';
+      $('feedback').className = 'feedback';
+      const baseTotal = Math.max(10, state.queue.length);
+      const displayIndex = Math.min(state.index + 1, baseTotal);
+      $('progressLabel').textContent = `${displayIndex} / ${baseTotal}`;
+      $('progressFill').style.width = `${Math.min(100, (state.index / baseTotal) * 100 + 5)}%`;
+      document.querySelector('.progress-track').setAttribute('aria-valuenow', Math.round((state.index / baseTotal) * 100));
+
+      shuffle(q.choices).forEach(choice => {
+        const btn = document.createElement('button');
+        btn.className = 'answer'; btn.textContent = choice;
+        btn.addEventListener('click', () => answer(btn, choice));
+        $('answers').appendChild(btn);
+      });
+      if (q.type === 'listen') {
+        $('soundBtn').addEventListener('click', () => speak(q.prompt));
+        $('slowBtn').addEventListener('click', () => speak(q.prompt, .58));
+        setTimeout(() => speak(q.prompt), 280);
+      }
+      updateModes(q.type);
+    }
+
+    function answer(button, choice) {
+      if (state.locked) return;
+      state.locked = true;
+      const q = state.queue[state.index];
+      const isCorrect = choice === q.answer;
+      [...$('answers').children].forEach(btn => {
+        btn.disabled = true;
+        if (btn.textContent === q.answer) btn.classList.add('correct');
+      });
+      if (!isCorrect) {
+        button.classList.add('wrong');
+        if (!q.retry) state.queue.splice(Math.min(state.index + 3, state.queue.length), 0, {...q, key:q.key + '-retry', retry:true});
+      } else {
+        state.correct += 1; state.roundXp += q.retry ? 5 : 10;
+      }
+      $('feedback').className = `feedback show ${isCorrect ? 'good' : 'bad'}`;
+      $('feedbackTitle').textContent = isCorrect ? '¡Muy bien! 答对了' : `正确答案：${q.answer}`;
+      $('feedbackText').textContent = q.note;
+      $('nextBtn').focus();
+    }
+
+    function nextQuestion() { state.index += 1; renderQuestion(); }
+
+    function updateModes(active) {
+      document.querySelectorAll('.mode').forEach(el => {
+        el.classList.toggle('active', el.dataset.mode === active);
+        const seen = state.queue.slice(0, state.index).some(q => q.type === el.dataset.mode);
+        el.classList.toggle('done', seen && el.dataset.mode !== active);
+      });
+    }
+
+    function finishRound() {
+      totalXp += state.roundXp;
+      const today = new Date().toISOString().slice(0,10);
+      const previousDay = saved.lastDay;
+      let streak = Number(saved.streak || 1);
+      if (previousDay && previousDay !== today) {
+        const diff = (new Date(today) - new Date(previousDay)) / 86400000;
+        streak = diff === 1 ? streak + 1 : 1;
+      }
+      const progress = { xp: totalXp, streak, lastDay: today };
+      localStorage.setItem('pennySpanishProgress', JSON.stringify(progress));
+      Object.assign(saved, progress);
+      $('xp').textContent = totalXp; $('streak').textContent = streak;
+      $('lessonView').style.display = 'none';
+      $('finishView').classList.add('show');
+      $('finishText').textContent = `答对 ${state.correct} 次，获得 ${state.roundXp} XP。没有拼写，也没有广告。`;
+    }
+
+    $('nextBtn').addEventListener('click', nextQuestion);
+    $('restartBtn').addEventListener('click', startRound);
+    $('resetBtn').addEventListener('click', () => {
+      localStorage.removeItem('pennySpanishProgress'); totalXp = 0;
+      $('xp').textContent = '0'; $('streak').textContent = '1'; startRound();
+    });
+
+    function registerModelTools() {
+      const context = document.modelContext;
+      if (!context?.registerTool) return;
+      const lifecycle = new AbortController();
+      const register = (tool) => {
+        try { Promise.resolve(context.registerTool(tool, { signal: lifecycle.signal })).catch(() => {}); }
+        catch (_) {}
+      };
+      register({
+        name: 'read_current_exercise',
+        title: '读取当前西语练习',
+        description: '读取当前练习的类型、题面和可选答案，不会改变答题状态。',
+        inputSchema: { type:'object', properties:{}, additionalProperties:false },
+        annotations: { readOnlyHint:true, untrustedContentHint:false },
+        execute() {
+          const q = state.queue[state.index];
+          if (!q) return { status:'round_complete' };
+          return { status:'in_progress', type:q.type, prompt:q.type === 'listen' ? 'audio_prompt' : q.prompt, context:q.context || null, choices:[...q.choices] };
+        }
+      });
+      register({
+        name: 'complete_current_exercise',
+        title: '回答当前西语练习',
+        description: '用当前页面中的一个选项完成本题，并同步更新页面反馈。',
+        inputSchema: {
+          type:'object',
+          properties:{ choice:{ type:'string', description:'必须与页面上的某个选项完全一致。' } },
+          required:['choice'], additionalProperties:false
+        },
+        annotations: { readOnlyHint:false, untrustedContentHint:false },
+        execute(input) {
+          const q = state.queue[state.index];
+          if (!q) throw new Error('本轮已经完成。');
+          if (state.locked) throw new Error('本题已经回答，请先继续到下一题。');
+          if (!input || !q.choices.includes(input.choice)) throw new Error('请选择当前题目提供的一个选项。');
+          const button = [...$('answers').children].find(btn => btn.textContent === input.choice);
+          answer(button, input.choice);
+          return { correct: input.choice === q.answer, selected:input.choice, correct_answer:q.answer };
+        }
+      });
+      register({
+        name: 'start_new_practice_round',
+        title: '开始一轮新练习',
+        description: '重开一轮 10 题的无拼写西语练习，并更新页面。',
+        inputSchema: { type:'object', properties:{}, additionalProperties:false },
+        annotations: { readOnlyHint:false, untrustedContentHint:false },
+        execute() { startRound(); return { status:'started', question_count:10 }; }
+      });
+    }
+    startRound();
+    registerModelTools();
+  </script>
+</body>
+</html>
