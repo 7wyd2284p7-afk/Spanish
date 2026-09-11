@@ -201,6 +201,7 @@
       <aside>
         <div class="side-card">
           <h2>今天的 10 题</h2>
+          <p class="note">题目会从你已经学过的 A1 课程中随机抽取。</p>
           <div class="mode-list">
             <div class="mode active" data-mode="listen"><span class="mode-icon">🔊</span><span>听音选义</span></div>
             <div class="mode" data-mode="word"><span class="mode-icon">👀</span><span>看词认义</span></div>
@@ -217,21 +218,49 @@
     </main>
   </div>
 
+  <script src="data/course-a1.js"></script>
   <script>
-    const lessons = [
-      { type:'listen', prompt:'Hola', answer:'你好', choices:['你好','谢谢','晚安','再见'], note:'Hola 是最常用的“你好”。' },
-      { type:'word', prompt:'gracias', answer:'谢谢', choices:['请','谢谢','对不起','没关系'], note:'Gracias 表示“谢谢”。' },
-      { type:'sentence', prompt:'Me llamo Penny.', answer:'我叫 Penny。', choices:['我是学生。','我叫 Penny。','我来自武汉。','我很好。'], note:'Me llamo… 用来介绍自己的名字。' },
-      { type:'dialogue', context:'别人问：¿Cómo estás?（你好吗？）', prompt:'你想回答“我很好，谢谢”。', answer:'Muy bien, gracias.', choices:['Muy bien, gracias.','Me llamo Penny.','Hasta luego.','No entiendo.'], note:'Muy bien 是“很好”，gracias 是“谢谢”。' },
-      { type:'listen', prompt:'Buenos días', answer:'早上好', choices:['下午好','早上好','晚安','明天见'], note:'Buenos días 通常在上午使用。' },
-      { type:'word', prompt:'agua', answer:'水', choices:['咖啡','水','面包','牛奶'], note:'Agua 是“水”。虽然以 a 开头，它仍然是阴性名词。' },
-      { type:'sentence', prompt:'Quiero un café.', answer:'我想要一杯咖啡。', choices:['我喜欢咖啡。','我想要一杯咖啡。','咖啡多少钱？','我不要咖啡。'], note:'Quiero… 是旅行和点餐时非常实用的“我想要……”。' },
-      { type:'dialogue', context:'在咖啡店，店员问你想要什么。', prompt:'选出最自然的回答。', answer:'Quiero un café, por favor.', choices:['Quiero un café, por favor.','Soy un café.','Hola café.','Gracias quiero.'], note:'点单可以说 Quiero…，加 por favor 更礼貌。' },
-      { type:'listen', prompt:'Hasta luego', answer:'回头见', choices:['欢迎','回头见','请进','早上好'], note:'Hasta luego 是常见的告别语，相当于“回头见”。' },
-      { type:'sentence', prompt:'No entiendo.', answer:'我不明白。', choices:['我不知道。','我不明白。','我不喜欢。','我没听见。'], note:'听不懂时直接说 No entiendo 很实用。' },
-      { type:'word', prompt:'amiga', answer:'女性朋友', choices:['母亲','姐妹','女性朋友','老师'], note:'Amiga 指女性朋友；男性朋友是 amigo。' },
-      { type:'dialogue', context:'第一次见面，对方说：Mucho gusto.', prompt:'你可以怎样回应？', answer:'Igualmente.', choices:['Igualmente.','De nada.','Lo siento.','Buenas noches.'], note:'Igualmente 在这里表示“我也很高兴认识你”。' }
-    ];
+    const courseLessons = COURSE.units.flatMap(unit => unit.lessons);
+    const courseProgress = JSON.parse(localStorage.getItem('pennySpanishA1V2') || '{}');
+    const completedIds = new Set(Object.keys(courseProgress.completed || {}));
+    const learnedLessons = completedIds.size
+      ? courseLessons.filter(lesson => completedIds.has(lesson.id))
+      : courseLessons.slice(0, 2);
+    const wordMeaningPool = courseLessons.flatMap(lesson => lesson.words.map(word => word.zh));
+    const sentenceMeaningPool = courseLessons.map(lesson => lesson.sentence.zh);
+
+    function makeChoices(answer, pool, seed) {
+      const alternatives = [...new Set(pool)].filter(value => value !== answer);
+      const picked = [];
+      for (let index = 0; picked.length < 3 && index < alternatives.length; index += 1) {
+        picked.push(alternatives[(seed + index * 7) % alternatives.length]);
+      }
+      const choices = [answer, ...picked];
+      const shift = seed % choices.length;
+      return [...choices.slice(shift), ...choices.slice(0, shift)];
+    }
+
+    const lessons = learnedLessons.flatMap((lesson, lessonIndex) => {
+      const wordQuestions = lesson.words.flatMap((word, wordIndex) => {
+        const seed = lessonIndex * 11 + wordIndex;
+        const choices = makeChoices(word.zh, wordMeaningPool, seed);
+        const note = `${word.es} 表示“${word.zh}”。${word.tip}`;
+        return [
+          {type:'listen', prompt:word.es, answer:word.zh, choices, note},
+          {type:'word', prompt:word.es, answer:word.zh, choices:makeChoices(word.zh, wordMeaningPool, seed + 3), note}
+        ];
+      });
+      const sentenceQuestion = {
+        type:'sentence', prompt:lesson.sentence.es, answer:lesson.sentence.zh,
+        choices:makeChoices(lesson.sentence.zh, sentenceMeaningPool, lessonIndex + 5),
+        note:`完整句子的意思是“${lesson.sentence.zh}”。`
+      };
+      const dialogueQuestion = {
+        type:'dialogue', context:lesson.dialogue.context, prompt:lesson.dialogue.prompt,
+        answer:lesson.dialogue.answer, choices:[...lesson.dialogue.choices], note:lesson.dialogue.note
+      };
+      return [...wordQuestions, sentenceQuestion, dialogueQuestion];
+    });
 
     const labels = {
       listen: ['听音选义','你听到了什么？','点蓝色按钮播放，可以慢速再听一次。'],

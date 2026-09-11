@@ -11,7 +11,7 @@
     completed: {}, wrong: [], currentId: 'l1'
   };
   const state = { lesson:null, step:0, score:0, total:0, mistakes:0, review:false, reviewItems:[] };
-  const stageNames = ['目标','认识','规律','配对','听辨','读句','造句','对话','完成'];
+  const stageNames = ['目标','认识','规律','回忆','配对','听辨','读句','造句','对话','完成'];
 
   function persist() { localStorage.setItem(storageKey, JSON.stringify(saved)); }
   function shuffle(items) {
@@ -44,6 +44,8 @@
     const next = nextLesson();
     $('coursePercent').textContent=`${percent}%`;
     $('courseProgress').style.width=`${percent}%`;
+    $('unitCount').textContent=COURSE.units.length;
+    $('lessonCount').textContent=allLessons.length;
     $('nextLessonTitle').textContent = completeCount===allLessons.length ? 'A1 路线已完成，可以自由复习' : `${next.unit.number}.${next.lessonIndex+1} ${next.title}`;
     $('nextLessonGoal').textContent = completeCount===allLessons.length ? '你已经走完整条路线。继续重练薄弱课程，让表达更稳定。' : next.canDo;
     $('continueBtn').textContent = completeCount ? (completeCount===allLessons.length ? '重练终点关' : '继续学习') : '开始第一课';
@@ -104,20 +106,32 @@
       bindNav(); return;
     }
     if(state.step===1) {
-      const cards=l.words.map((w,i)=>`<div class="word-card"><strong>${escapeHtml(w.es)}</strong><span>${escapeHtml(w.zh)}</span><button class="mini-sound" data-speak="${escapeHtml(w.es)}" aria-label="播放 ${escapeHtml(w.es)}">${soundSvg()}</button>${i===0?`<div class="word-tip">发音提示：${escapeHtml(w.tip)}</div>`:''}</div>`).join('');
-      shell('先认识','今天只认识 4 个核心表达','点小喇叭听发音。现在只需要眼熟、耳熟。',`<div class="word-grid">${cards}</div>`,actionButtons('看看规律'));
+      const cards=l.words.map(w=>`<div class="word-card"><strong>${escapeHtml(w.es)}</strong><span>${escapeHtml(w.zh)}</span><button class="mini-sound" data-speak="${escapeHtml(w.es)}" aria-label="播放 ${escapeHtml(w.es)}">${soundSvg()}</button><div class="word-tip">发音与用法：${escapeHtml(w.tip)}</div></div>`).join('');
+      shell('先认识',`今天认识 ${l.words.length} 个核心表达`,'每个表达都点一次喇叭，先听，再跟读两遍。',`<div class="word-grid">${cards}</div>`,actionButtons('看看规律'));
       bindSpeak(); bindNav(); return;
     }
     if(state.step===2) {
-      shell('一个规律',escapeHtml(l.grammar.title),'只讲今天马上用得上的部分。',`<div class="grammar-card"><h2>${escapeHtml(l.grammar.title)}</h2><p>${escapeHtml(l.grammar.body)}</p><div class="examples">${l.grammar.examples.map(x=>`<span>${escapeHtml(x)}</span>`).join('')}</div></div>`,actionButtons('开始热身'));
+      shell('一个规律',escapeHtml(l.grammar.title),'只讲今天马上用得上的部分。',`<div class="grammar-card"><h2>${escapeHtml(l.grammar.title)}</h2><p>${escapeHtml(l.grammar.body)}</p><div class="examples">${l.grammar.examples.map(x=>`<span>${escapeHtml(x)}</span>`).join('')}</div></div>`,actionButtons('先主动回忆'));
       bindNav(); return;
     }
-    if(state.step===3) return renderMatch();
-    if(state.step===4) return renderListen();
-    if(state.step===5) return renderMeaning();
-    if(state.step===6) return renderOrder();
-    if(state.step===7) return renderDialogue();
+    if(state.step===3) return renderRecall();
+    if(state.step===4) return renderMatch();
+    if(state.step===5) return renderListen();
+    if(state.step===6) return renderMeaning();
+    if(state.step===7) return renderOrder();
+    if(state.step===8) return renderDialogue();
     finishLesson();
+  }
+
+  function renderRecall() {
+    const l=state.lesson;
+    shell('主动回忆 · 不计分','先试着说，再看答案','看着中文，在心里或出声说出完整西语。想不全也没关系。',`<div class="recall-card"><span>想说：</span><strong>${escapeHtml(l.sentence.zh)}</strong><button class="reveal-btn" id="revealBtn">我想好了，看答案</button><div class="recall-answer" id="recallAnswer" hidden><b>${escapeHtml(l.sentence.es)}</b><button class="mini-sound" data-speak="${escapeHtml(l.sentence.es)}" aria-label="播放答案">${soundSvg()}</button><small>听一遍，再完整跟读两遍。重点是把声音说出来。</small></div></div>`,`<div class="stage-actions"><button class="secondary-btn" data-action="back">返回</button></div>`);
+    bindSpeak(); bindNav();
+    $('revealBtn').addEventListener('click',()=>{
+      $('revealBtn').disabled=true; $('recallAnswer').hidden=false;
+      $('lessonStage').insertAdjacentHTML('beforeend','<div class="stage-actions"><button class="primary-btn" data-action="next">开始配对</button></div>');
+      document.querySelector('[data-action="next"]').addEventListener('click',nextStage);
+    });
   }
 
   function bindSpeak() {
@@ -224,4 +238,3 @@
   $('closeLesson').addEventListener('click',renderDashboard);
   renderDashboard(); registerModelTools();
 })();
-

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#2555d9" />
+  <meta name="description" content="Penny 的西班牙语 A1 学习路线：从零开始，先学再练，不做拼写题。" />
+  <title>Penny 的西语小站 · A1</title>
+  <link rel="stylesheet" href="styles/course.css" />
+
+</head>
+<body>
+  <header class="topbar">
+    <button class="brand" id="homeBtn" aria-label="返回课程首页">
+      <span class="brand-mark">¡P!</span><span class="brand-name">Penny 的西语小站</span>
+    </button>
+    <div class="top-stats" aria-label="学习数据">
+      <span title="连续学习天数">🔥 <b id="streak">1</b><i>天</i></span>
+      <span title="累计经验值">⚡ <b id="xp">0</b><i>XP</i></span>
+    </div>
+  </header>
+
+  <main>
+    <section id="dashboard" class="screen dashboard-screen">
+      <div class="course-head">
+        <div>
+          <span class="level-pill">CEFR · A1 精学</span>
+          <h1>一步步学会<br><em>真正能用的西语</em></h1>
+          <p>50 节微课逐步推进。不是看一遍就算学会，而是理解、练习、复现，再通过关卡。</p>
+        </div>
+        <div class="continue-card">
+          <div class="continue-top"><span>下一步</span><strong id="coursePercent">0%</strong></div>
+          <div class="big-progress"><div id="courseProgress"></div></div>
+          <h2 id="nextLessonTitle">Hola！先认识西语的声音</h2>
+          <p id="nextLessonGoal">听懂并使用最基本的问候。</p>
+          <button class="primary-btn" id="continueBtn">开始第一课</button>
+          <button class="review-link" id="reviewBtn" hidden>复习错题 <span id="reviewCount">0</span></button>
+        </div>
+      </div>
+
+      <div class="method-strip" aria-label="每课学习流程">
+        <span><b>1</b> 听与认识</span><i>›</i><span><b>2</b> 理解规律</span><i>›</i><span><b>3</b> 主动回忆</span><i>›</i><span><b>4</b> 组句回应</span><i>›</i><span><b>5</b> 间隔复习</span>
+      </div>
+
+      <div class="section-heading">
+        <div><span>完整路线</span><h2><span id="unitCount">10</span> 个单元 · <span id="lessonCount">50</span> 节微课</h2></div>
+        <p>每完成一课，就自动解锁下一课。</p>
+      </div>
+      <div id="courseMap" class="course-map"></div>
+      <footer class="course-source">课程能力目标参照 CEFR A1 与塞万提斯学院课程框架编排。</footer>
+    </section>
+
+    <section id="lessonScreen" class="screen lesson-screen" hidden>
+      <div class="lesson-shell">
+        <div class="lesson-progress-row">
+          <button class="close-btn" id="closeLesson" aria-label="退出本课">×</button>
+          <div class="lesson-progress" role="progressbar" aria-label="本课进度" aria-valuemin="0" aria-valuemax="100"><div id="lessonProgress"></div></div>
+          <span id="lessonStep">1 / 7</span>
+        </div>
+        <div id="lessonStage" class="lesson-stage" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <template id="soundIcon">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18 6a8.5 8.5 0 0 1 0 12"/></svg>
+  </template>
+
+  <script src="data/course-a1.js"></script>
+
+  <script src="scripts/course-app.js"></script>
+
+</body>
+</html>
+

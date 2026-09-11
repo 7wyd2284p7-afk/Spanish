@@ -6,7 +6,52 @@
   <meta name="theme-color" content="#2555d9" />
   <meta name="description" content="Penny 的西班牙语 A1 学习路线：从零开始，先学再练，不做拼写题。" />
   <title>Penny 的西语小站 · A1</title>
-  <link rel="stylesheet" href="styles/course.css" />
+  <style>
+:root {
+  --ink:#16213d; --muted:#69738d; --blue:#2555d9; --blue-dark:#173ba8;
+  --blue-soft:#edf3ff; --paper:#fff; --bg:#f6f8fd; --line:#dfe5f2;
+  --orange:#ff9c3d; --mint:#1f9f79; --red:#d9475c;
+  --shadow:0 18px 55px rgba(29,55,118,.13);
+}
+*{box-sizing:border-box}
+html{font-size:16px}
+body{margin:0;min-height:100vh;overflow-x:hidden;color:var(--ink);background:radial-gradient(circle at 10% 0,rgba(255,171,81,.19),transparent 26rem),radial-gradient(circle at 95% 9%,rgba(54,112,255,.16),transparent 30rem),var(--bg);font-family:ui-rounded,"SF Pro Rounded","PingFang SC","Microsoft YaHei",system-ui,sans-serif}
+button{font:inherit}
+button:focus-visible{outline:4px solid rgba(37,85,217,.2);outline-offset:3px}
+[hidden]{display:none!important}
+.topbar{width:min(calc(100% - 32px),1120px);height:76px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;border:0;background:none;color:var(--ink);font-weight:900;font-size:1.08rem;cursor:pointer;padding:0}
+.brand-mark{width:42px;height:42px;display:grid;place-items:center;color:#fff;background:var(--blue);border-radius:14px 14px 14px 5px;box-shadow:0 8px 18px rgba(37,85,217,.24)}
+.top-stats{display:flex;gap:10px}.top-stats>span{display:flex;align-items:center;gap:5px;padding:9px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.8);font-weight:800;font-size:.9rem}.top-stats i{font-style:normal;color:var(--muted);font-size:.78rem}
+main{width:min(calc(100% - 32px),1120px);margin:auto;padding:12px 0 56px}
+.course-head{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(310px,.85fr);gap:42px;align-items:center;padding:38px 0 32px}.course-head>*{min-width:0}
+.level-pill{display:inline-flex;padding:8px 12px;border-radius:999px;background:#fff1dc;color:#a75810;font-size:.78rem;font-weight:900;letter-spacing:.07em}
+.course-head h1{margin:16px 0 14px;font-size:clamp(2.35rem,6vw,4.7rem);line-height:1.02;letter-spacing:-.065em}.course-head h1 em{font-style:normal;color:var(--blue)}
+.course-head>div:first-child>p{max-width:610px;margin:0;overflow-wrap:anywhere;color:var(--muted);font-size:1.08rem;line-height:1.75}
+.continue-card{padding:26px;border:1px solid var(--line);border-radius:27px;background:rgba(255,255,255,.94);box-shadow:var(--shadow)}
+.continue-top{display:flex;justify-content:space-between;color:var(--muted);font-size:.84rem;font-weight:850}.continue-top strong{color:var(--blue)}
+.big-progress{height:11px;margin:12px 0 22px;background:#e8ecf5;border-radius:99px;overflow:hidden}.big-progress>div{width:0;height:100%;background:linear-gradient(90deg,var(--orange),#ffc45d);border-radius:inherit;transition:width .35s}
+.continue-card h2{margin:0 0 8px;font-size:1.35rem;line-height:1.35}.continue-card p{margin:0 0 20px;color:var(--muted);line-height:1.55;font-size:.92rem}
+.primary-btn{width:100%;border:0;border-radius:15px;padding:14px 20px;color:#fff;background:var(--blue);box-shadow:0 6px 0 var(--blue-dark);font-weight:900;cursor:pointer;transition:transform .12s,box-shadow .12s}.primary-btn:active{transform:translateY(4px);box-shadow:0 2px 0 var(--blue-dark)}
+.review-link{width:100%;margin-top:14px;border:0;background:none;color:var(--red);font-weight:850;cursor:pointer}.review-link span{display:inline-grid;place-items:center;min-width:22px;height:22px;margin-left:4px;border-radius:99px;background:#ffe9ed}
+.method-strip{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:17px 22px;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.75);overflow:auto}.method-strip span{display:flex;align-items:center;gap:8px;white-space:nowrap;color:#4f5c7a;font-size:.84rem;font-weight:800}.method-strip b{width:25px;height:25px;display:grid;place-items:center;border-radius:9px;background:var(--blue-soft);color:var(--blue);font-size:.75rem}.method-strip i{font-style:normal;color:#aab3c7}
+.section-heading{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:52px 0 20px}.section-heading span{font-size:.78rem;color:var(--blue);font-weight:900;letter-spacing:.08em}.section-heading h2{font-size:1.7rem;margin:5px 0 0}.section-heading p{color:var(--muted);font-size:.9rem;margin:0}
+.course-map{display:grid;gap:20px}.unit-card{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:24px;background:rgba(255,255,255,.88)}
+.unit-head{display:flex;align-items:center;gap:15px;padding:19px 22px;border-bottom:1px solid var(--line)}.unit-icon{width:44px;height:44px;display:grid;place-items:center;border-radius:14px;font-size:1.28rem;background:color-mix(in srgb,var(--unit-color) 14%,white)}.unit-copy{flex:1}.unit-copy small{display:block;color:var(--unit-color);font-weight:900;font-size:.72rem;letter-spacing:.06em}.unit-copy h3{margin:3px 0;font-size:1.1rem}.unit-copy p{margin:0;color:var(--muted);font-size:.82rem;line-height:1.4}.unit-state{font-size:.78rem;color:var(--muted);font-weight:800}
+.lesson-list{display:grid;grid-template-columns:1fr 1fr}.lesson-node{display:grid;grid-template-columns:45px 1fr auto;align-items:center;gap:12px;padding:17px 21px;border:0;background:transparent;text-align:left;color:var(--ink);cursor:pointer;border-right:1px solid var(--line)}.lesson-node:last-child{border-right:0}.lesson-node:last-child:nth-child(odd){grid-column:1/-1}.lesson-node:hover:not(:disabled){background:#f7f9ff}.lesson-node:disabled{cursor:not-allowed;opacity:.48}.node-index{width:42px;height:42px;display:grid;place-items:center;border:2px solid var(--line);border-radius:14px;font-weight:900;color:var(--muted);background:#fff}.lesson-node.current .node-index{color:#fff;border-color:var(--unit-color);background:var(--unit-color);box-shadow:0 5px 0 color-mix(in srgb,var(--unit-color) 70%,#000)}.lesson-node.complete .node-index{color:#fff;border-color:var(--mint);background:var(--mint)}.node-copy strong{display:block;font-size:.94rem;line-height:1.3}.node-copy small{display:block;margin-top:4px;color:var(--muted);font-size:.76rem}.node-score{font-weight:900;color:var(--mint);font-size:.8rem}.lock{color:#9099ad}.course-source{text-align:center;color:#8891a7;font-size:.76rem;padding:30px 0 0}
+.lesson-screen{min-height:calc(100vh - 100px)}.lesson-shell{width:min(100%,820px);margin:4px auto 0;padding:0 0 34px}.lesson-progress-row{display:flex;align-items:center;gap:14px;margin:0 0 18px}.close-btn{width:39px;height:39px;flex:0 0 auto;border:0;border-radius:12px;background:#e9edf6;color:#68738e;font-size:1.55rem;line-height:1;cursor:pointer}.lesson-progress{height:12px;flex:1;background:#e4e9f3;border-radius:99px;overflow:hidden}.lesson-progress>div{width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--orange),#ffc45d);transition:width .3s}.lesson-progress-row>span{min-width:48px;text-align:right;color:var(--muted);font-size:.82rem;font-weight:850}
+.lesson-stage{min-height:635px;padding:clamp(24px,6vw,48px);border:1px solid var(--line);border-radius:29px;background:#fff;box-shadow:var(--shadow);display:flex;flex-direction:column}.stage-kicker{color:var(--blue);font-size:.76rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.lesson-stage h1{margin:9px 0 10px;font-size:clamp(1.85rem,5vw,2.8rem);line-height:1.15;letter-spacing:-.045em}.stage-sub{margin:0;color:var(--muted);line-height:1.65}.stage-body{flex:1;display:flex;flex-direction:column;justify-content:center;padding:28px 0}.intro-icon{width:86px;height:86px;display:grid;place-items:center;border-radius:27px;background:#fff0da;font-size:2.5rem;margin-bottom:24px;transform:rotate(-4deg)}.can-do{padding:18px;border-radius:18px;background:var(--blue-soft);color:#244394;line-height:1.55;font-weight:750}.stage-actions{display:flex;gap:12px;justify-content:flex-end}.secondary-btn{border:2px solid var(--line);border-bottom-width:5px;border-radius:15px;padding:11px 18px;background:#fff;color:var(--ink);font-weight:850;cursor:pointer}.stage-actions .primary-btn{width:auto;min-width:150px}
+.word-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.word-card{position:relative;padding:18px 55px 18px 18px;border:2px solid var(--line);border-radius:18px;background:#fff}.word-card strong{display:block;font-size:1.25rem;margin-bottom:5px}.word-card>span{color:var(--muted);font-size:.9rem}.mini-sound{position:absolute;right:13px;top:13px;width:36px;height:36px;display:grid;place-items:center;border:0;border-radius:11px;background:var(--blue-soft);color:var(--blue);cursor:pointer}.mini-sound svg{width:19px}.word-tip{margin:12px -37px 0 0;padding:10px 12px;border-radius:12px;background:#fff7e9;color:#8a581d;font-size:.8rem;line-height:1.5}
+.recall-card{position:relative;display:grid;gap:13px;padding:24px;border:2px solid #d5def8;border-radius:22px;background:linear-gradient(145deg,#f5f7ff,#fff)}.recall-card>span{color:var(--muted);font-size:.82rem;font-weight:850}.recall-card>strong{font-size:clamp(1.35rem,4vw,2rem);line-height:1.45}.reveal-btn{justify-self:start;border:0;border-radius:13px;padding:11px 15px;background:var(--blue);color:#fff;font-weight:900;cursor:pointer}.reveal-btn:disabled{opacity:.45}.recall-answer{position:relative;margin-top:5px;padding:20px 58px 20px 18px;border-radius:16px;background:#eafaf4;color:#176e56}.recall-answer>b{display:block;font-size:1.25rem;line-height:1.45}.recall-answer>small{display:block;margin-top:8px;line-height:1.5}.recall-answer .mini-sound{background:#fff;color:#176e56}
+.grammar-card{padding:23px;border:1px solid #cbd8fb;border-radius:21px;background:linear-gradient(145deg,#f4f7ff,#fff)}.grammar-card h2{margin:0 0 8px;font-size:1.35rem}.grammar-card>p{margin:0 0 17px;color:#52617f;line-height:1.65}.examples{display:grid;gap:8px}.examples span{padding:10px 12px;border-radius:11px;background:#fff;color:#33415f;font-size:.9rem;font-weight:750}.listen-box{display:flex;align-items:center;gap:20px}.sound-main{width:86px;height:86px;display:grid;place-items:center;flex:0 0 auto;border:0;border-radius:25px;background:var(--blue);color:#fff;box-shadow:0 8px 0 var(--blue-dark);cursor:pointer}.sound-main:active{transform:translateY(5px);box-shadow:0 3px 0 var(--blue-dark)}.sound-main svg{width:37px}.slow-btn{margin-top:12px;border:1px solid #cbd7fb;border-radius:11px;padding:8px 11px;background:var(--blue-soft);color:var(--blue-dark);font-weight:800;cursor:pointer}.big-prompt{font-size:clamp(1.55rem,5vw,2.5rem);font-weight:900;line-height:1.3}.context{color:var(--muted);font-weight:750;margin-bottom:10px}
+.answers{display:grid;grid-template-columns:1fr 1fr;gap:11px}.answer{min-height:62px;padding:13px 15px;border:2px solid var(--line);border-bottom-width:5px;border-radius:16px;background:#fff;color:var(--ink);font-weight:780;text-align:left;cursor:pointer;line-height:1.4}.answer:hover:not(:disabled){border-color:#9fb4f0;background:#f8faff}.answer.correct{border-color:var(--mint);background:#ebfaf5;color:#157258}.answer.wrong{border-color:var(--red);background:#fff0f2;color:#a32f40}.answer:disabled{cursor:default}.feedback{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-top:18px;padding:16px;border-radius:17px}.feedback.good{background:#eafaf4;color:#176e56}.feedback.bad{background:#fff0f2;color:#9e3041}.feedback strong{display:block;margin-bottom:3px}.feedback small{font-size:.84rem;line-height:1.45}.feedback .primary-btn{width:auto;min-width:115px;box-shadow:none;background:currentColor}.feedback .primary-btn span{color:#fff}
+.token-bank,.sentence-line{display:flex;flex-wrap:wrap;gap:10px;min-height:73px;padding:14px;border-radius:16px}.sentence-line{margin-bottom:15px;border:2px dashed #cbd4e5;background:#fafbfe}.token-bank{background:#f0f3f9}.token{border:2px solid #d4dbea;border-bottom-width:4px;border-radius:12px;padding:10px 13px;background:#fff;color:var(--ink);font-weight:850;cursor:pointer}.token.used{opacity:.28;pointer-events:none}.order-tools{display:flex;justify-content:space-between;align-items:center;margin-top:14px}.order-tools small{color:var(--muted)}.check-btn{border:0;border-radius:13px;padding:11px 18px;background:var(--blue);color:#fff;font-weight:900;cursor:pointer}.check-btn:disabled{opacity:.4;cursor:not-allowed}
+.summary{text-align:center;align-items:center}.summary-icon{width:96px;height:96px;display:grid;place-items:center;border-radius:30px;background:#fff0da;font-size:2.8rem;transform:rotate(-5deg);margin:0 auto 20px}.score-ring{font-size:2.6rem;color:var(--blue);font-weight:950;letter-spacing:-.05em}.summary-list{display:flex;justify-content:center;gap:12px;margin:22px 0}.summary-list span{padding:10px 14px;border-radius:12px;background:#f1f4fa;color:#53607b;font-size:.85rem;font-weight:800}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.match-item{min-height:54px;border:2px solid var(--line);border-bottom-width:4px;border-radius:14px;background:#fff;font-weight:800;color:var(--ink);cursor:pointer}.match-item.selected{border-color:var(--blue);background:var(--blue-soft)}.match-item.matched{border-color:var(--mint);background:#eafaf4;color:#157258;pointer-events:none}.match-status{text-align:center;color:var(--muted);font-size:.86rem;margin-top:14px}
+@media(max-width:820px){.course-head{grid-template-columns:1fr;gap:26px;padding-top:20px}.course-head h1 br{display:none}.lesson-list{grid-template-columns:1fr}.lesson-node{border-right:0;border-bottom:1px solid var(--line)}.lesson-node:last-child{border-bottom:0}.method-strip{justify-content:flex-start}.section-heading{margin-top:38px}.lesson-stage{min-height:620px}}
+@media(max-width:560px){.topbar,main{width:min(calc(100% - 18px),1120px)}.topbar{height:64px}.brand-name{display:none}.brand-mark{width:39px;height:39px}.top-stats>span:first-child{display:none}.course-head{padding-top:13px}.course-head h1{font-size:2.2rem;line-height:1.08;overflow-wrap:anywhere}.course-head h1 br{display:block}.continue-card{padding:21px;border-radius:23px}.method-strip{margin:0 -9px;border-left:0;border-right:0;border-radius:0}.section-heading{align-items:start}.section-heading>p{display:none}.unit-head{padding:16px}.unit-state{display:none}.lesson-node{padding:15px}.lesson-stage{padding:22px 18px;border-radius:22px;min-height:calc(100vh - 105px)}.answers,.word-grid{grid-template-columns:1fr}.feedback{align-items:stretch;flex-direction:column}.feedback .primary-btn{width:100%}.stage-actions{flex-direction:column-reverse}.stage-actions .primary-btn{width:100%}.secondary-btn{width:100%}.listen-box{align-items:flex-start;flex-direction:column}.summary-list{flex-wrap:wrap}.match-item{font-size:.9rem}.lesson-progress-row{margin-top:3px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+  </style>
 
 </head>
 <body>
@@ -24,9 +69,9 @@
     <section id="dashboard" class="screen dashboard-screen">
       <div class="course-head">
         <div>
-          <span class="level-pill">CEFR · A1 入门</span>
+          <span class="level-pill">CEFR · A1 精学</span>
           <h1>一步步学会<br><em>真正能用的西语</em></h1>
-          <p>你不用设计课程。跟着路线走：每课先理解，再听、认、读、开口。</p>
+          <p>50 节微课逐步推进。不是看一遍就算学会，而是理解、练习、复现，再通过关卡。</p>
         </div>
         <div class="continue-card">
           <div class="continue-top"><span>下一步</span><strong id="coursePercent">0%</strong></div>
@@ -39,11 +84,11 @@
       </div>
 
       <div class="method-strip" aria-label="每课学习流程">
-        <span><b>1</b> 先认识</span><i>›</i><span><b>2</b> 听和读</span><i>›</i><span><b>3</b> 词块造句</span><i>›</i><span><b>4</b> 情境对话</span><i>›</i><span><b>5</b> 错题再见</span>
+        <span><b>1</b> 听与认识</span><i>›</i><span><b>2</b> 理解规律</span><i>›</i><span><b>3</b> 主动回忆</span><i>›</i><span><b>4</b> 组句回应</span><i>›</i><span><b>5</b> 间隔复习</span>
       </div>
 
       <div class="section-heading">
-        <div><span>完整路线</span><h2>10 个单元 · 20 节微课</h2></div>
+        <div><span>完整路线</span><h2><span id="unitCount">10</span> 个单元 · <span id="lessonCount">50</span> 节微课</h2></div>
         <p>每完成一课，就自动解锁下一课。</p>
       </div>
       <div id="courseMap" class="course-map"></div>
@@ -66,9 +111,1086 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18 6a8.5 8.5 0 0 1 0 12"/></svg>
   </template>
 
-  <script src="data/course-a1.js"></script>
+  <script>
+window.COURSE = {
+  title: '西班牙语 A1 路线',
+  subtitle: '从完全零基础，到能处理简单日常交流',
+  units: [
+    {
+      id: 'u1', number: 1, title: '第一次开口', icon: '☀️', color: '#ff9c3d',
+      goal: '听清基本声音，完成问候、告别和最基础的求助。',
+      lessons: [
+        {
+          id: 'l1', title: 'Hola！先认识西语的声音', minutes: 8,
+          canDo: '听懂并使用“你好、是、不是、再见”。',
+          words: [
+            {es:'hola', zh:'你好', tip:'h 不发音，读起来接近“哦啦”。'},
+            {es:'sí', zh:'是；对', tip:'í 上的重音符号表示这里要重读。'},
+            {es:'no', zh:'不；不是', tip:'西语的 o 发音干净，不要拖成“欧”。'},
+            {es:'adiós', zh:'再见', tip:'重音落在 ó。'}
+          ],
+          grammar: {title:'西语元音很稳定', body:'a、e、i、o、u 通常分别保持接近“啊、诶、衣、哦、乌”的声音。先听准，不要求你现在拼写。', examples:['hola · 你好','sí · 是','no · 不']},
+          sentence: {es:'Hola, soy Penny.', zh:'你好，我是 Penny。'},
+          order: {tokens:['Hola,','soy','Penny.'], answer:'Hola, soy Penny.', zh:'你好，我是 Penny。'},
+          dialogue: {context:'第一次见到新同学。', prompt:'对方说：¡Hola!', choices:['¡Hola!','Adiós.','No.','Perdón.'], answer:'¡Hola!', note:'别人问候你时，直接用 Hola 回应就很自然。'}
+        },
+        {
+          id: 'l2', title: '礼貌与听不懂时求助', minutes: 9,
+          canDo: '说谢谢、请、对不起，并请对方慢一点或重复。',
+          words: [
+            {es:'gracias', zh:'谢谢', tip:'常用表达，末尾 s 要轻轻带出。'},
+            {es:'por favor', zh:'请', tip:'放在请求后面会更自然。'},
+            {es:'perdón', zh:'对不起；劳驾', tip:'可用于道歉或引起别人注意。'},
+            {es:'no entiendo', zh:'我不明白', tip:'entender 是“理解”，这里直接记整句。'}
+          ],
+          grammar: {title:'先学整块表达', body:'初学阶段不用急着拆每个词。把 No entiendo 和 ¿Puede repetir? 当作两块能立刻使用的工具。', examples:['No entiendo. · 我不明白','¿Puede repetir? · 您能重复吗？','Más despacio, por favor. · 请慢一点']},
+          sentence: {es:'Más despacio, por favor.', zh:'请说慢一点。'},
+          order: {tokens:['No','entiendo.'], answer:'No entiendo.', zh:'我不明白。'},
+          dialogue: {context:'对方说得太快，你没有听懂。', prompt:'最合适的回应是：', choices:['¿Puede repetir, por favor?','Muy bien.','Me llamo Penny.','Hasta mañana.'], answer:'¿Puede repetir, por favor?', note:'Puede repetir 是礼貌的“您能重复吗”。'}
+        }
+      ]
+    },
+    {
+      id: 'u2', number: 2, title: '介绍我自己', icon: '👋', color: '#3f6ee8',
+      goal: '交换姓名、国籍、居住地、语言和学习信息。',
+      lessons: [
+        {
+          id: 'l3', title: '名字与身份', minutes: 10,
+          canDo: '介绍自己的名字，并询问对方叫什么。',
+          words: [
+            {es:'me llamo', zh:'我叫……', tip:'ll 在多数地区接近汉语“耶/亚”的起始音。'},
+            {es:'soy', zh:'我是……', tip:'来自 ser，用于身份。'},
+            {es:'¿cómo?', zh:'怎样；怎么', tip:'疑问词带重音符号。'},
+            {es:'mucho gusto', zh:'很高兴认识你', tip:'见面时的固定表达。'}
+          ],
+          grammar: {title:'Me llamo 和 Soy', body:'Me llamo + 名字表示“我叫……”；Soy + 身份或国籍表示“我是……”。', examples:['Me llamo Penny. · 我叫 Penny','Soy estudiante. · 我是学生','¿Cómo te llamas? · 你叫什么？']},
+          sentence: {es:'Me llamo Penny y soy estudiante.', zh:'我叫 Penny，是一名学生。'},
+          order: {tokens:['Me','llamo','Penny.'], answer:'Me llamo Penny.', zh:'我叫 Penny。'},
+          dialogue: {context:'别人问：¿Cómo te llamas?', prompt:'选择正确回答。', choices:['Me llamo Penny.','Estoy bien.','Soy de China.','Tengo veinte años.'], answer:'Me llamo Penny.', note:'¿Cómo te llamas? 专门询问名字。'}
+        },
+        {
+          id: 'l4', title: '来自哪里、会什么语言', minutes: 11,
+          canDo: '说出来自哪里、住在哪里，以及会说什么语言。',
+          words: [
+            {es:'China', zh:'中国', tip:'西班牙语中 ch 发音接近“吃”的开头。'},
+            {es:'español', zh:'西班牙语', tip:'ñ 是西语特色字母，接近“ny”。'},
+            {es:'vivo en', zh:'我住在……', tip:'地点前常用 en。'},
+            {es:'hablo', zh:'我说；我会说', tip:'h 不发音。'}
+          ],
+          grammar: {title:'de 表来源，en 表地点', body:'Soy de + 地方表示来自哪里；Vivo en + 地方表示住在哪里。', examples:['Soy de China. · 我来自中国','Vivo en Wuhan. · 我住在武汉','Hablo chino. · 我说中文']},
+          sentence: {es:'Soy de China y vivo en Wuhan.', zh:'我来自中国，住在武汉。'},
+          order: {tokens:['Vivo','en','Wuhan.'], answer:'Vivo en Wuhan.', zh:'我住在武汉。'},
+          dialogue: {context:'对方问：¿De dónde eres?（你来自哪里？）', prompt:'选择正确回答。', choices:['Soy de China.','Vivo bien.','Hablo en China.','Me llamo China.'], answer:'Soy de China.', note:'¿De dónde eres? 询问来源，回答用 Soy de…。'}
+        }
+      ]
+    },
+    {
+      id: 'u3', number: 3, title: '数字与时间', icon: '🕐', color: '#7b57d1',
+      goal: '处理年龄、电话号码、价格、日期和时间。',
+      lessons: [
+        {
+          id: 'l5', title: '数字 0–30 与年龄', minutes: 12,
+          canDo: '听懂基础数字，说自己的年龄和电话号码。',
+          words: [
+            {es:'uno', zh:'一', tip:'放在名词前有时会变成 un。'},
+            {es:'diez', zh:'十', tip:'西班牙常读 /θ/，拉美通常读 /s/；都正确。'},
+            {es:'veintiuno', zh:'二十一', tip:'放在阳性名词 años 前写作 veintiún。'},
+            {es:'años', zh:'岁；年', tip:'ñ 不能读成普通 n。'}
+          ],
+          grammar: {title:'西语用“拥有”表达年龄', body:'中文说“我是二十一岁”，西语说 Tengo veintiún años，字面是“我拥有二十一年”。', examples:['Tengo veintiún años. · 我二十一岁','¿Cuántos años tienes? · 你几岁？','Mi número es… · 我的号码是……']},
+          sentence: {es:'Tengo veintiún años.', zh:'我二十一岁。'},
+          order: {tokens:['Tengo','veintiún','años.'], answer:'Tengo veintiún años.', zh:'我二十一岁。'},
+          dialogue: {context:'别人问：¿Cuántos años tienes?', prompt:'选择正确回答。', choices:['Tengo veintiún años.','Soy veintiuno.','Me llamo veintiuno.','Vivo veintiuno.'], answer:'Tengo veintiún años.', note:'年龄固定用 tener + 数字 + años。'}
+        },
+        {
+          id: 'l6', title: '星期、日期与几点', minutes: 12,
+          canDo: '询问和理解星期、日期及整点时间。',
+          words: [
+            {es:'hoy', zh:'今天', tip:'h 不发音。'},
+            {es:'mañana', zh:'明天；早晨', tip:'具体意思由语境决定。'},
+            {es:'lunes', zh:'星期一', tip:'西语的星期通常不大写。'},
+            {es:'la hora', zh:'时间；钟点', tip:'¿Qué hora es? 表示“几点了？”'}
+          ],
+          grammar: {title:'一点用单数，其余用复数', body:'一点说 Es la una；两点及以后说 Son las dos / tres…。', examples:['Es la una. · 一点','Son las tres. · 三点','Hoy es lunes. · 今天星期一']},
+          sentence: {es:'Hoy es lunes y son las tres.', zh:'今天星期一，现在三点。'},
+          order: {tokens:['Son','las','tres.'], answer:'Son las tres.', zh:'现在三点。'},
+          dialogue: {context:'你想知道现在几点。', prompt:'应该怎样问？', choices:['¿Qué hora es?','¿Cuántos años tienes?','¿Cómo te llamas?','¿Dónde vives?'], answer:'¿Qué hora es?', note:'¿Qué hora es? 是询问时间的固定说法。'}
+        }
+      ]
+    },
+    {
+      id: 'u4', number: 4, title: '家人与人物', icon: '🧑‍🤝‍🧑', color: '#e25475',
+      goal: '介绍家人，描述人的外貌和基本性格。',
+      lessons: [
+        {
+          id: 'l7', title: '我的家人', minutes: 11,
+          canDo: '说清家庭成员和简单关系。',
+          words: [
+            {es:'madre', zh:'母亲', tip:'也常说 mamá。'},
+            {es:'padre', zh:'父亲', tip:'也常说 papá。'},
+            {es:'hermana', zh:'姐妹', tip:'男性兄弟是 hermano。'},
+            {es:'familia', zh:'家庭；家人', tip:'重音在 mi。'}
+          ],
+          grammar: {title:'mi 是“我的”', body:'mi + 单数名词，mis + 复数名词。它不随说话者性别变化。', examples:['mi madre · 我的母亲','mis hermanos · 我的兄弟姐妹','Esta es mi familia. · 这是我的家人']},
+          sentence: {es:'Esta es mi madre.', zh:'这是我的母亲。'},
+          order: {tokens:['Esta','es','mi','familia.'], answer:'Esta es mi familia.', zh:'这是我的家人。'},
+          dialogue: {context:'你向朋友展示一张家庭照。', prompt:'怎样介绍照片中的母亲？', choices:['Esta es mi madre.','Soy mi madre.','Tiene mi madre.','Vivo mi madre.'], answer:'Esta es mi madre.', note:'介绍某人可以用 Este/Esta es…。'}
+        },
+        {
+          id: 'l8', title: '外貌与性格', minutes: 12,
+          canDo: '用几个简单词描述一个人。',
+          words: [
+            {es:'alta', zh:'高的（女性）', tip:'描述男性通常用 alto。'},
+            {es:'joven', zh:'年轻的', tip:'男女形式相同。'},
+            {es:'simpática', zh:'友善的（女性）', tip:'男性形式是 simpático。'},
+            {es:'pelo', zh:'头发', tip:'Tiene el pelo largo = 她/他留长发。'}
+          ],
+          grammar: {title:'形容词常配合阴阳性', body:'很多以 -o 结尾的形容词描述女性时变成 -a；以 -e 等结尾的词常不变。', examples:['Él es alto. · 他很高','Ella es alta. · 她很高','Ella es joven. · 她很年轻']},
+          sentence: {es:'Ella es joven y simpática.', zh:'她年轻而且友善。'},
+          order: {tokens:['Ella','es','muy','simpática.'], answer:'Ella es muy simpática.', zh:'她非常友善。'},
+          dialogue: {context:'朋友问：¿Cómo es Ana?（Ana 是什么样的人？）', prompt:'选择合适回答。', choices:['Es joven y simpática.','Se llama Ana.','Tiene veinte años de hora.','Vive una hermana.'], answer:'Es joven y simpática.', note:'¿Cómo es…? 常用来询问人的特点。'}
+        }
+      ]
+    },
+    {
+      id: 'u5', number: 5, title: '我的一天', icon: '🌤️', color: '#20a27a',
+      goal: '谈论日常安排、学习和习惯。',
+      lessons: [
+        {
+          id: 'l9', title: '从起床到睡觉', minutes: 12,
+          canDo: '按顺序描述一天中的基本活动。',
+          words: [
+            {es:'me levanto', zh:'我起床', tip:'这是反身动词 levantarse 的“我”形式。'},
+            {es:'desayuno', zh:'我吃早餐；早餐', tip:'既可以是动词，也可以是名词。'},
+            {es:'estudio', zh:'我学习', tip:'-o 常提示主语是“我”。'},
+            {es:'duermo', zh:'我睡觉', tip:'来自 dormir。'}
+          ],
+          grammar: {title:'先掌握“我”的现在时', body:'许多规则动词的“我”形式以 -o 结尾：hablo、estudio、trabajo。先用它们说自己的生活。', examples:['Estudio español. · 我学西语','Trabajo por la tarde. · 我下午工作','Duermo a las once. · 我十一点睡']},
+          sentence: {es:'Estudio por la mañana.', zh:'我上午学习。'},
+          order: {tokens:['Me','levanto','a','las','ocho.'], answer:'Me levanto a las ocho.', zh:'我八点起床。'},
+          dialogue: {context:'朋友问：¿Qué haces por la mañana?（你上午做什么？）', prompt:'选择合适回答。', choices:['Estudio por la mañana.','Soy la mañana.','Tengo la mañana.','Me llamo mañana.'], answer:'Estudio por la mañana.', note:'¿Qué haces? 是“你做什么？”。'}
+        },
+        {
+          id: 'l10', title: '经常、有时、从不', minutes: 11,
+          canDo: '表达活动频率和简单习惯。',
+          words: [
+            {es:'siempre', zh:'总是', tip:'表示最高频率。'},
+            {es:'normalmente', zh:'通常', tip:'很多 -mente 结尾的词相当于副词。'},
+            {es:'a veces', zh:'有时', tip:'作为一个固定词组记忆。'},
+            {es:'nunca', zh:'从不', tip:'放在动词前可直接否定。'}
+          ],
+          grammar: {title:'频率词放在动词附近', body:'Siempre estudio…、A veces estudio…、Nunca estudio…。这些词不随人称变化。', examples:['Siempre desayuno. · 我总吃早餐','A veces cocino. · 我有时做饭','Nunca fumo. · 我从不抽烟']},
+          sentence: {es:'A veces estudio por la noche.', zh:'我有时晚上学习。'},
+          order: {tokens:['Nunca','bebo','café.'], answer:'Nunca bebo café.', zh:'我从不喝咖啡。'},
+          dialogue: {context:'别人问：¿Estudias español todos los días?', prompt:'你想说“有时学习”。', choices:['A veces estudio.','Soy estudio.','Estudio nunca a veces.','Tengo español.'], answer:'A veces estudio.', note:'A veces 可以直接放在动词前。'}
+        }
+      ]
+    },
+    {
+      id: 'u6', number: 6, title: '点餐与购物', icon: '☕', color: '#d98029',
+      goal: '在咖啡店、餐厅和商店完成简单交易。',
+      lessons: [
+        {
+          id: 'l11', title: '在咖啡店点单', minutes: 12,
+          canDo: '礼貌地点饮料和食物，并请求结账。',
+          words: [
+            {es:'agua', zh:'水', tip:'虽然以 a 开头，agua 仍是阴性名词。'},
+            {es:'café', zh:'咖啡', tip:'é 表示末尾重读。'},
+            {es:'quiero', zh:'我想要', tip:'来自 querer。'},
+            {es:'la cuenta', zh:'账单', tip:'结账时说 La cuenta, por favor。'}
+          ],
+          grammar: {title:'Quiero + 东西', body:'Quiero… 直接清楚；在服务场景中加 por favor 就足够礼貌。', examples:['Quiero un café. · 我想要一杯咖啡','Para mí, agua. · 我要水','La cuenta, por favor. · 请结账']},
+          sentence: {es:'Quiero un café con leche.', zh:'我想要一杯牛奶咖啡。'},
+          order: {tokens:['La','cuenta,','por','favor.'], answer:'La cuenta, por favor.', zh:'请结账。'},
+          dialogue: {context:'店员问：¿Qué desea?（您要什么？）', prompt:'你想点一杯咖啡。', choices:['Quiero un café, por favor.','Soy un café.','Tengo la cuenta.','Café llamo.'], answer:'Quiero un café, por favor.', note:'Quiero + 名词是最实用的点单句式。'}
+        },
+        {
+          id: 'l12', title: '价格、颜色和尺码', minutes: 13,
+          canDo: '询问价格，并指出想要的颜色或尺码。',
+          words: [
+            {es:'¿cuánto cuesta?', zh:'多少钱？', tip:'cuánto 是疑问词，要带重音。'},
+            {es:'barato', zh:'便宜的', tip:'女性形式 barata。'},
+            {es:'grande', zh:'大的；大码', tip:'男女形式相同。'},
+            {es:'rojo', zh:'红色的', tip:'女性形式 roja。'}
+          ],
+          grammar: {title:'名词前常需要 un / una', body:'un 常配阳性单数名词，una 常配阴性单数名词。先跟着词一起记。', examples:['un café · 一杯咖啡','una camiseta · 一件T恤','una talla grande · 一个大码']},
+          sentence: {es:'Quiero una camiseta roja.', zh:'我想要一件红色T恤。'},
+          order: {tokens:['¿Cuánto','cuesta','esta','camiseta?'], answer:'¿Cuánto cuesta esta camiseta?', zh:'这件T恤多少钱？'},
+          dialogue: {context:'你看中一件衣服，想问价格。', prompt:'应该怎样问？', choices:['¿Cuánto cuesta?','¿Qué hora es?','¿Dónde vives?','¿Cómo estás?'], answer:'¿Cuánto cuesta?', note:'问单件商品价格用 ¿Cuánto cuesta?。'}
+        }
+      ]
+    },
+    {
+      id: 'u7', number: 7, title: '城市与交通', icon: '🚇', color: '#2b8ab7',
+      goal: '寻找地点、理解方位并使用基础交通。',
+      lessons: [
+        {
+          id: 'l13', title: '这里有什么、在哪里', minutes: 12,
+          canDo: '询问某地是否有设施，以及具体在哪里。',
+          words: [
+            {es:'hay', zh:'有；存在', tip:'各种数量都用 hay，不变化。'},
+            {es:'está', zh:'在……；位于', tip:'询问具体位置时常用。'},
+            {es:'baño', zh:'卫生间', tip:'ñ 的声音接近“ny”。'},
+            {es:'estación', zh:'车站', tip:'ó 重读。'}
+          ],
+          grammar: {title:'hay 与 está 不一样', body:'Hay 用来问“有没有”；está 用来问一个已知事物“在哪里”。', examples:['¿Hay un baño? · 有卫生间吗？','¿Dónde está el baño? · 卫生间在哪？','Hay una estación aquí. · 这里有车站']},
+          sentence: {es:'Hay una farmacia cerca.', zh:'附近有一家药店。'},
+          order: {tokens:['¿Dónde','está','el','baño?'], answer:'¿Dónde está el baño?', zh:'卫生间在哪里？'},
+          dialogue: {context:'你不知道附近有没有地铁站。', prompt:'应该怎样问？', choices:['¿Hay una estación de metro cerca?','¿Es una estación?','¿Tengo metro?','¿Cuánto estación?'], answer:'¿Hay una estación de metro cerca?', note:'询问是否存在某处，用 ¿Hay…?。'}
+        },
+        {
+          id: 'l14', title: '方向与乘车', minutes: 13,
+          canDo: '听懂左右直行，并询问如何到达。',
+          words: [
+            {es:'derecha', zh:'右边', tip:'a la derecha = 向右。'},
+            {es:'izquierda', zh:'左边', tip:'a la izquierda = 向左。'},
+            {es:'todo recto', zh:'一直走', tip:'常见指路表达。'},
+            {es:'autobús', zh:'公共汽车', tip:'ú 重读。'}
+          ],
+          grammar: {title:'¿Cómo llego a…?', body:'用这句询问“我怎么到……？”；方向前常用 a：a la derecha、a la izquierda。', examples:['Todo recto. · 一直走','Gira a la derecha. · 向右转','Voy en autobús. · 我坐公交去']},
+          sentence: {es:'Sigue todo recto y gira a la izquierda.', zh:'一直走，然后向左转。'},
+          order: {tokens:['Gira','a','la','derecha.'], answer:'Gira a la derecha.', zh:'向右转。'},
+          dialogue: {context:'你想去火车站。', prompt:'选择正确问法。', choices:['¿Cómo llego a la estación?','¿Cuánto es la estación?','¿Quién estación?','¿Tengo a la estación?'], answer:'¿Cómo llego a la estación?', note:'¿Cómo llego a…? 是问路的核心句式。'}
+        }
+      ]
+    },
+    {
+      id: 'u8', number: 8, title: '家与物品', icon: '🏠', color: '#8962c9',
+      goal: '描述住所、房间、物品及其位置。',
+      lessons: [
+        {
+          id: 'l15', title: '房间和位置', minutes: 12,
+          canDo: '指出家中房间，并描述东西在哪里。',
+          words: [
+            {es:'cocina', zh:'厨房', tip:'西班牙常读 /θ/，拉美常读 /s/。'},
+            {es:'habitación', zh:'房间；卧室', tip:'也常说 dormitorio。'},
+            {es:'encima de', zh:'在……上面', tip:'作为整个介词短语记忆。'},
+            {es:'debajo de', zh:'在……下面', tip:'与 encima de 相对。'}
+          ],
+          grammar: {title:'位置表达后接 de', body:'encima de、debajo de、al lado de 后面再接物品或地点。', examples:['encima de la mesa · 在桌上','debajo de la cama · 在床下','al lado de la puerta · 在门旁']},
+          sentence: {es:'El libro está encima de la mesa.', zh:'书在桌子上。'},
+          order: {tokens:['Está','debajo','de','la','cama.'], answer:'Está debajo de la cama.', zh:'它在床下面。'},
+          dialogue: {context:'朋友问：¿Dónde está el libro?', prompt:'书在桌子上。', choices:['Está encima de la mesa.','Hay el libro mesa.','Es encima mesa.','Tiene una mesa.'], answer:'Está encima de la mesa.', note:'具体物品的位置用 está + 位置。'}
+        },
+        {
+          id: 'l16', title: '我的、你的，以及“有”', minutes: 12,
+          canDo: '谈论拥有的物品，并辨认是谁的。',
+          words: [
+            {es:'tengo', zh:'我有', tip:'来自 tener。'},
+            {es:'tienes', zh:'你有', tip:'这是 tú 的形式。'},
+            {es:'mi', zh:'我的', tip:'复数形式 mis。'},
+            {es:'tu', zh:'你的', tip:'这里不带重音；tú 带重音时是“你”。'}
+          ],
+          grammar: {title:'tengo / tienes', body:'Tengo 表示“我有”，Tienes 表示“你有”。这两个形式要分别记住。', examples:['Tengo un libro. · 我有一本书','¿Tienes coche? · 你有车吗？','Es mi móvil. · 这是我的手机']},
+          sentence: {es:'Tengo una habitación pequeña.', zh:'我有一间小房间。'},
+          order: {tokens:['¿Tienes','un','ordenador?'], answer:'¿Tienes un ordenador?', zh:'你有电脑吗？'},
+          dialogue: {context:'朋友指着手机问：¿Es tu móvil?', prompt:'你想回答“是的，是我的”。', choices:['Sí, es mi móvil.','Sí, tengo tu móvil.','Soy un móvil.','Está mi sí.'], answer:'Sí, es mi móvil.', note:'确认所属关系可用 Sí, es mi…。'}
+        }
+      ]
+    },
+    {
+      id: 'u9', number: 9, title: '喜欢与计划', icon: '🎧', color: '#d64f91',
+      goal: '表达喜好、休闲活动、天气和近期计划。',
+      lessons: [
+        {
+          id: 'l17', title: '我喜欢什么', minutes: 12,
+          canDo: '说自己喜欢或不喜欢的事物和活动。',
+          words: [
+            {es:'me gusta', zh:'我喜欢（单数或活动）', tip:'字面更接近“它令我喜欢”。'},
+            {es:'me gustan', zh:'我喜欢（复数事物）', tip:'复数名词前用 gustan。'},
+            {es:'música', zh:'音乐', tip:'ú 重读。'},
+            {es:'leer', zh:'阅读', tip:'动词原形，可接在 me gusta 后。'}
+          ],
+          grammar: {title:'gusta 看后面的东西', body:'后面是一个事物或一个活动，用 gusta；后面是多个事物，用 gustan。', examples:['Me gusta el café. · 我喜欢咖啡','Me gusta leer. · 我喜欢阅读','Me gustan los libros. · 我喜欢书']},
+          sentence: {es:'Me gusta escuchar música.', zh:'我喜欢听音乐。'},
+          order: {tokens:['Me','gustan','los','libros.'], answer:'Me gustan los libros.', zh:'我喜欢书。'},
+          dialogue: {context:'别人问：¿Qué te gusta hacer?', prompt:'你想说喜欢阅读。', choices:['Me gusta leer.','Soy leer.','Tengo gusta.','Leo me libros.'], answer:'Me gusta leer.', note:'喜欢做某事：Me gusta + 动词原形。'}
+        },
+        {
+          id: 'l18', title: '天气与简单计划', minutes: 12,
+          canDo: '描述常见天气，并说今天或明天要做什么。',
+          words: [
+            {es:'hace calor', zh:'天气热', tip:'描述天气常用 hacer。'},
+            {es:'hace frío', zh:'天气冷', tip:'í 重读。'},
+            {es:'llueve', zh:'下雨', tip:'ll 的发音随地区不同。'},
+            {es:'voy a', zh:'我要；我打算', tip:'后面接动词原形。'}
+          ],
+          grammar: {title:'ir a + 动词：近期打算', body:'Voy a + 动词原形，用来表达“我打算做……”。', examples:['Voy a estudiar. · 我要学习','Voy a salir. · 我要出门','Mañana voy a descansar. · 明天我要休息']},
+          sentence: {es:'Mañana voy a estudiar español.', zh:'明天我要学习西班牙语。'},
+          order: {tokens:['Hoy','hace','mucho','calor.'], answer:'Hoy hace mucho calor.', zh:'今天天气很热。'},
+          dialogue: {context:'朋友问：¿Qué vas a hacer mañana?', prompt:'你想说明天要休息。', choices:['Voy a descansar.','Soy descanso.','Hace descansar.','Tengo mañana.'], answer:'Voy a descansar.', note:'近期计划用 voy a + 动词原形。'}
+        }
+      ]
+    },
+    {
+      id: 'u10', number: 10, title: '生存交流与终点关', icon: '🧭', color: '#176f69',
+      goal: '处理身体不适、旅行住宿，并综合运用 A1 能力。',
+      lessons: [
+        {
+          id: 'l19', title: '身体不舒服与旅行求助', minutes: 13,
+          canDo: '简单表达疼痛、需要帮助和住宿需求。',
+          words: [
+            {es:'me duele', zh:'我……疼', tip:'后接一个部位：Me duele la cabeza。'},
+            {es:'ayuda', zh:'帮助；救命', tip:'¡Ayuda! 可用于紧急求助。'},
+            {es:'farmacia', zh:'药店', tip:'寻找药店时非常实用。'},
+            {es:'reserva', zh:'预订', tip:'Tengo una reserva = 我有预订。'}
+          ],
+          grammar: {title:'Me duele + 身体部位', body:'表达一个部位疼用 me duele；此阶段先记最常用的完整句。', examples:['Me duele la cabeza. · 我头疼','Necesito ayuda. · 我需要帮助','Tengo una reserva. · 我有预订']},
+          sentence: {es:'Necesito una farmacia, por favor.', zh:'我需要找一家药店。'},
+          order: {tokens:['Me','duele','la','cabeza.'], answer:'Me duele la cabeza.', zh:'我头疼。'},
+          dialogue: {context:'到酒店前台，你已经预订了房间。', prompt:'应该怎样说？', choices:['Tengo una reserva.','Soy una reserva.','Me duele la reserva.','Hay mi hotel.'], answer:'Tengo una reserva.', note:'酒店前台最常用的开场句之一。'}
+        },
+        {
+          id: 'l20', title: 'A1 综合挑战', minutes: 15,
+          canDo: '综合完成自我介绍、时间、点餐、问路和求助。',
+          checkpoint: true,
+          words: [
+            {es:'¿De dónde eres?', zh:'你来自哪里？', tip:'回答 Soy de…。'},
+            {es:'¿Cuánto cuesta?', zh:'多少钱？', tip:'购物场景。'},
+            {es:'¿Dónde está…?', zh:'……在哪里？', tip:'询问具体位置。'},
+            {es:'¿Puede repetir?', zh:'您能重复吗？', tip:'听不懂时的自救句。'}
+          ],
+          grammar: {title:'A1 的核心是“能做什么”', body:'不追求复杂句，而是能在对方说得慢且愿意配合时，处理具体、可预测的日常需要。', examples:['介绍自己','获取时间、价格与方向','点单、购物、住宿与简单求助']},
+          sentence: {es:'Hola, me llamo Penny y soy de China.', zh:'你好，我叫 Penny，来自中国。'},
+          order: {tokens:['Quiero','un','café,','por','favor.'], answer:'Quiero un café, por favor.', zh:'我想要一杯咖啡，谢谢。'},
+          dialogue: {context:'你问了路，但对方说得太快。', prompt:'选择最有用的回应。', choices:['Más despacio, por favor.','¿Cuánto cuesta?','Tengo veinte años.','Me gusta leer.'], answer:'Más despacio, por favor.', note:'能主动请求放慢和重复，也是 A1 互动能力的一部分。'}
+        }
+      ]
+    }
+  ]
+};
 
-  <script src="scripts/course-app.js"></script>
+// 在原有 20 节生存入门课之后，为每个单元补充两个深化课和一个阶段复习。
+// 保留 l1–l20 的 ID，确保已经产生的学习进度继续有效。
+const A1_DEEPENING = {
+  u1: [
+    {
+      id:'l21', title:'五个元音与清晰节奏', minutes:10,
+      canDo:'听出 a、e、i、o、u，并用稳定元音读出常见词。',
+      words:[
+        {es:'casa',zh:'房子',tip:'a 始终接近清晰的“啊”，不要滑动。'},
+        {es:'mesa',zh:'桌子',tip:'e 接近短促的“诶”，保持口型稳定。'},
+        {es:'vino',zh:'葡萄酒',tip:'i 接近“衣”，v 在西语里通常与 b 的发音接近。'},
+        {es:'foto',zh:'照片',tip:'o 接近短促的“哦”，不要读成“欧”。'},
+        {es:'luna',zh:'月亮',tip:'u 接近“乌”；每个元音都要清楚。'}
+      ],
+      grammar:{title:'西语元音很稳定',body:'同一个元音在不同词里通常保持相近的声音。先把每个音节读清楚，再追求速度。',examples:['ca-sa · 两个清楚音节','me-sa · e 与 a 都不滑动','fo-to · 两个 o 基本一致']},
+      sentence:{es:'La casa tiene una mesa.',zh:'房子里有一张桌子。'},
+      order:{tokens:['La','foto','está','en','la','mesa.'],answer:'La foto está en la mesa.',zh:'照片在桌子上。'},
+      dialogue:{context:'老师让你分音节读 casa。',prompt:'哪一种读法最符合西语节奏？',choices:['ca-sa','cai-sa','ca-sei','caa-sa'],answer:'ca-sa',note:'西语常按清楚、均匀的音节推进。'}
+    },
+    {
+      id:'l22', title:'重音、问句与听力自救', minutes:11,
+      canDo:'找到常见词的重读位置，并请求重复、解释或慢一点。',
+      words:[
+        {es:'teléfono',zh:'电话',tip:'重音符号告诉你 lé 音节要重读。'},
+        {es:'español',zh:'西班牙语',tip:'ñ 接近“ny”；最后的音节重读。'},
+        {es:'¿Qué significa?',zh:'是什么意思？',tip:'询问一个词或表达的含义。'},
+        {es:'No entiendo.',zh:'我没听懂。',tip:'比沉默更有用的基础自救句。'},
+        {es:'Otra vez, por favor.',zh:'请再说一次。',tip:'otra vez 表示“再一次”。'}
+      ],
+      grammar:{title:'重音符号不是装饰',body:'带重音符号的元音通常明确标出重读位置；问句要同时写开头和结尾问号。',examples:['te-LÉ-fo-no','es-pa-ÑOL','¿Qué significa?']},
+      sentence:{es:'No entiendo. Otra vez, por favor.',zh:'我没听懂，请再说一次。'},
+      order:{tokens:['¿Qué','significa','esta','palabra?'],answer:'¿Qué significa esta palabra?',zh:'这个词是什么意思？'},
+      dialogue:{context:'你听见一个新词，但不知道意思。',prompt:'怎样请对方解释？',choices:['¿Qué significa?','¿Cuánto cuesta?','¿Dónde vives?','¿Qué hora es?'],answer:'¿Qué significa?',note:'¿Qué significa? 可以直接询问词或表达的含义。'}
+    },
+    {
+      id:'l23', title:'单元复习：我能让对话继续', minutes:12, checkpoint:true,
+      canDo:'完成问候，并在没听清时主动维持简单对话。',
+      words:[
+        {es:'Buenos días.',zh:'早上好。',tip:'通常在上午使用。'},
+        {es:'Mucho gusto.',zh:'很高兴认识你。',tip:'初次见面时常用。'},
+        {es:'Perdón.',zh:'不好意思；抱歉。',tip:'引起注意或轻微道歉。'},
+        {es:'Más despacio, por favor.',zh:'请慢一点。',tip:'请求对方降低语速。'},
+        {es:'Ahora sí.',zh:'现在听懂了。',tip:'表示这一次明白了。'}
+      ],
+      grammar:{title:'先回应，再提出需要',body:'简单对话不要求每句都长。先用礼貌词回应，再明确说“重复”“慢一点”或“什么意思”。',examples:['Perdón. No entiendo.','Otra vez, por favor.','Gracias. Ahora sí.']},
+      sentence:{es:'Perdón, ¿puede repetir más despacio?',zh:'不好意思，您能慢一点再说一遍吗？'},
+      order:{tokens:['Buenos','días,','mucho','gusto.'],answer:'Buenos días, mucho gusto.',zh:'早上好，很高兴认识你。'},
+      dialogue:{context:'对方重复后，你终于听懂了。',prompt:'最自然的回应是什么？',choices:['Gracias, ahora sí.','No tengo mesa.','Son las dos.','Me duele aquí.'],answer:'Gracias, ahora sí.',note:'感谢对方并说明现在听懂了，可以自然结束修复过程。'}
+    }
+  ],
+  u2: [
+    {
+      id:'l24', title:'一个、这个：名词的性与冠词', minutes:11,
+      canDo:'用 el、la、un、una 指认常见的人和物。',
+      words:[
+        {es:'el libro',zh:'这本书；书',tip:'阳性单数名词常与 el 搭配。'},
+        {es:'la mesa',zh:'这张桌子；桌子',tip:'阴性单数名词常与 la 搭配。'},
+        {es:'un amigo',zh:'一位男性朋友',tip:'un 表示不特定的阳性单数。'},
+        {es:'una amiga',zh:'一位女性朋友',tip:'una 表示不特定的阴性单数。'},
+        {es:'este / esta',zh:'这个 / 这个（阴性）',tip:'形式要与后面的名词呼应。'}
+      ],
+      grammar:{title:'把冠词和名词一起记',body:'名词的语法性别不一定等于现实性别。学习新词时，把 el 或 la 当作词的一部分。',examples:['el teléfono','la ciudad','un estudiante / una estudiante']},
+      sentence:{es:'Esta es una amiga y este es un amigo.',zh:'这是一位女性朋友，这是一位男性朋友。'},
+      order:{tokens:['Este','es','el','libro','de','Ana.'],answer:'Este es el libro de Ana.',zh:'这是 Ana 的书。'},
+      dialogue:{context:'别人指着桌上的物品问：¿Qué es esto?',prompt:'你想回答“这是一张桌子”。',choices:['Es una mesa.','Soy una mesa.','Está una mesa.','Hay la mesa yo.'],answer:'Es una mesa.',note:'指认事物时可以用 Es + un/una + 名词。'}
+    },
+    {
+      id:'l25', title:'职业、单位与联系方式', minutes:12,
+      canDo:'说出职业、工作或学习地点，并交换基础联系方式。',
+      words:[
+        {es:'Soy estudiante.',zh:'我是学生。',tip:'职业前通常不加 un/una。'},
+        {es:'Trabajo en una oficina.',zh:'我在办公室工作。',tip:'trabajar en + 地点。'},
+        {es:'Estudio en la universidad.',zh:'我在大学学习。',tip:'estudiar en + 学习地点。'},
+        {es:'Mi número es…',zh:'我的号码是……',tip:'用于提供电话号码。'},
+        {es:'Mi correo es…',zh:'我的邮箱是……',tip:'correo 在这里指电子邮箱。'}
+      ],
+      grammar:{title:'职业前通常不用冠词',body:'用 ser 表示身份或职业时，直接说 Soy estudiante / Es médica；描述工作地点则用 trabajar en。',examples:['Soy profesora.','Trabajo en una tienda.','Estudio español en casa.']},
+      sentence:{es:'Soy estudiante y estudio español en casa.',zh:'我是学生，在家学西班牙语。'},
+      order:{tokens:['Trabajo','en','una','empresa','pequeña.'],answer:'Trabajo en una empresa pequeña.',zh:'我在一家小公司工作。'},
+      dialogue:{context:'新同学问：¿Cuál es tu número de teléfono?',prompt:'哪句可以提供号码？',choices:['Mi número es 612 345 678.','Soy de China.','Trabajo por la tarde.','Tengo una hermana.'],answer:'Mi número es 612 345 678.',note:'¿Cuál es tu número? 询问号码，回答用 Mi número es…。'}
+    },
+    {
+      id:'l26', title:'单元复习：完整介绍自己', minutes:13, checkpoint:true,
+      canDo:'用姓名、来源、语言、职业和联系方式完成简短自我介绍。',
+      words:[
+        {es:'Me llamo…',zh:'我叫……',tip:'介绍姓名。'},
+        {es:'Soy de…',zh:'我来自……',tip:'介绍来源地。'},
+        {es:'Vivo en…',zh:'我住在……',tip:'介绍现居地。'},
+        {es:'Hablo…',zh:'我会说……',tip:'介绍语言。'},
+        {es:'¿Y tú?',zh:'你呢？',tip:'把同一个问题自然地问回去。'}
+      ],
+      grammar:{title:'用 y 把短句连接起来',body:'A1 自我介绍不需要复杂长句。把几个正确短句用 y 连接，就能形成清楚的连续表达。',examples:['Me llamo Penny y soy de China.','Vivo en Wuhan y estudio español.','Hablo chino y un poco de inglés.']},
+      sentence:{es:'Me llamo Penny, vivo en Wuhan y estudio español.',zh:'我叫 Penny，住在武汉，学习西班牙语。'},
+      order:{tokens:['Hablo','chino','y','un','poco','de','inglés.'],answer:'Hablo chino y un poco de inglés.',zh:'我会说中文和一点英语。'},
+      dialogue:{context:'你做完自我介绍，想了解对方。',prompt:'如何自然地把话题交给对方？',choices:['¿Y tú?','¿Cuánto es?','Está aquí.','Tengo hambre.'],answer:'¿Y tú?',note:'¿Y tú? 简短但非常高频，可以把相同问题问回去。'}
+    }
+  ],
+  u3: [
+    {
+      id:'l27', title:'三十一到一百：价格与号码', minutes:12,
+      canDo:'听懂和说出 31–100 的常见价格、年龄与号码。',
+      words:[
+        {es:'treinta',zh:'三十',tip:'30 之后常用 y 连接个位数。'},
+        {es:'cuarenta',zh:'四十',tip:'注意 cua- 的发音。'},
+        {es:'cincuenta',zh:'五十',tip:'cin-cuen-ta，共三个音节。'},
+        {es:'setenta',zh:'七十',tip:'不要和 sesenta（六十）混淆。'},
+        {es:'cien',zh:'一百',tip:'正好 100 用 cien。'}
+      ],
+      grammar:{title:'31–99：十位 + y + 个位',body:'个位不是零时，在十位与个位之间放 y；整十不需要 y。',examples:['treinta y uno · 31','cuarenta y cinco · 45','noventa · 90']},
+      sentence:{es:'Cuesta cuarenta y cinco euros.',zh:'价格是四十五欧元。'},
+      order:{tokens:['Mi','número','termina','en','setenta','y','dos.'],answer:'Mi número termina en setenta y dos.',zh:'我的号码最后是七十二。'},
+      dialogue:{context:'店员说：Son treinta y ocho euros.',prompt:'价格是多少？',choices:['38 欧元','28 欧元','48 欧元','83 欧元'],answer:'38 欧元',note:'treinta y ocho 是 30 + 8。'}
+    },
+    {
+      id:'l28', title:'日历、日期与约时间', minutes:12,
+      canDo:'询问和确认星期、日期以及简单约会时间。',
+      words:[
+        {es:'hoy',zh:'今天',tip:'不与冠词搭配。'},
+        {es:'mañana',zh:'明天；早晨',tip:'具体含义由上下文决定。'},
+        {es:'el lunes',zh:'在星期一',tip:'说某个星期几常用 el。'},
+        {es:'el quince de mayo',zh:'5 月 15 日',tip:'日期用“日 + de + 月”。'},
+        {es:'¿Te va bien?',zh:'你方便吗？',tip:'用于确认时间是否合适。'}
+      ],
+      grammar:{title:'日期前用 el',body:'说某天发生事情时可用 el + 星期/日期。询问日期用 ¿Qué fecha es hoy?，询问星期用 ¿Qué día es hoy?。',examples:['Hoy es martes.','La cita es el viernes.','Es el dos de junio.']},
+      sentence:{es:'La clase es el lunes a las seis.',zh:'课在星期一六点。'},
+      order:{tokens:['¿Te','va','bien','mañana','a','las','cinco?'],answer:'¿Te va bien mañana a las cinco?',zh:'明天五点你方便吗？'},
+      dialogue:{context:'朋友提议周五见面，你那天方便。',prompt:'怎样确认？',choices:['Sí, el viernes me va bien.','No, tengo treinta años.','Es una mesa grande.','Voy en autobús.'],answer:'Sí, el viernes me va bien.',note:'me va bien 表示“这个时间对我合适”。'}
+    },
+    {
+      id:'l29', title:'单元复习：安排一次见面', minutes:13, checkpoint:true,
+      canDo:'交换日期、时间与号码，并确认一个简单安排。',
+      words:[
+        {es:'¿Cuándo?',zh:'什么时候？',tip:'询问日期或时间。'},
+        {es:'¿A qué hora?',zh:'几点？',tip:'专门询问钟点。'},
+        {es:'a mediodía',zh:'在中午',tip:'固定时间表达。'},
+        {es:'por la tarde',zh:'在下午',tip:'表示一天中的时间段。'},
+        {es:'Perfecto, hasta mañana.',zh:'很好，明天见。',tip:'确认安排并结束对话。'}
+      ],
+      grammar:{title:'从宽到窄确认时间',body:'先问 cuándo，再问具体几点；最后重复日期和时间，可以减少误会。',examples:['¿Cuándo es la clase?','¿A qué hora?','El martes a las seis, ¿verdad?']},
+      sentence:{es:'Nos vemos el martes por la tarde.',zh:'我们星期二下午见。'},
+      order:{tokens:['La','cita','es','el','doce','a','las','cuatro.'],answer:'La cita es el doce a las cuatro.',zh:'预约在 12 号四点。'},
+      dialogue:{context:'对方确认：El jueves a las diez.',prompt:'你同意并结束安排。',choices:['Perfecto, hasta el jueves.','Tengo diez euros.','Hoy es una ciudad.','No hablo la mesa.'],answer:'Perfecto, hasta el jueves.',note:'重复星期可以确认你听到的安排。'}
+    }
+  ]
+};
+
+Object.assign(A1_DEEPENING, {
+  u4: [
+    {
+      id:'l30', title:'我的家、你的家：复数与所有', minutes:12,
+      canDo:'用复数和 mi、tu、su 介绍家庭成员。',
+      words:[
+        {es:'mis padres',zh:'我的父母',tip:'复数名词前用 mis。'},
+        {es:'tu hermano',zh:'你的兄弟',tip:'tu 不随名词性别变化。'},
+        {es:'su hija',zh:'他/她/您的女儿',tip:'su 的具体指代由上下文决定。'},
+        {es:'nuestros amigos',zh:'我们的男性朋友或混合朋友',tip:'nuestro 要与名词配合。'},
+        {es:'sus abuelos',zh:'他/她/您的祖父母',tip:'复数名词前用 sus。'}
+      ],
+      grammar:{title:'mi 变 mis，tu 变 tus',body:'mi、tu、su 根据后面名词的单复数变化，不根据拥有者的性别变化。',examples:['mi madre / mis padres','tu amiga / tus amigos','su hijo / sus hijos']},
+      sentence:{es:'Mis padres viven con mi hermano.',zh:'我的父母和我的兄弟住在一起。'},
+      order:{tokens:['Esta','es','mi','hermana','y','estos','son','mis','padres.'],answer:'Esta es mi hermana y estos son mis padres.',zh:'这是我姐姐/妹妹，这是我的父母。'},
+      dialogue:{context:'别人指着照片问：¿Quiénes son?',prompt:'你想说“他们是我的祖父母”。',choices:['Son mis abuelos.','Es mi abuelo.','Soy sus abuelos.','Están mi familia.'],answer:'Son mis abuelos.',note:'复数人物用 son，mis 与复数 abuelos 搭配。'}
+    },
+    {
+      id:'l31', title:'ser、estar 与穿着描述', minutes:13,
+      canDo:'区分人物特征、当前状态和当天穿着。',
+      words:[
+        {es:'Es alto.',zh:'他个子高。',tip:'稳定特征常用 ser。'},
+        {es:'Está cansada.',zh:'她累了。',tip:'当前状态常用 estar。'},
+        {es:'Lleva una camisa azul.',zh:'他/她穿着蓝衬衫。',tip:'描述当下穿着用 llevar。'},
+        {es:'Tiene el pelo corto.',zh:'他/她留着短发。',tip:'描述头发常用 tener。'},
+        {es:'Parece joven.',zh:'他/她看起来年轻。',tip:'parecer 用于表达外观印象。'}
+      ],
+      grammar:{title:'特征用 ser，状态用 estar',body:'ser 常描述身份和相对稳定的特点；estar 常描述此刻状态。穿着用 llevar，身体特征也常用 tener。',examples:['Es simpática.','Está contento hoy.','Lleva pantalones negros.']},
+      sentence:{es:'Mi amiga es alta y hoy lleva una chaqueta roja.',zh:'我的朋友个子高，今天穿着红色外套。'},
+      order:{tokens:['Está','cansado,','pero','está','bien.'],answer:'Está cansado, pero está bien.',zh:'他累了，但状态还好。'},
+      dialogue:{context:'你要帮朋友在人群中找 Ana。',prompt:'哪句描述最有用？',choices:['Es alta y lleva una camisa blanca.','Tiene una cita mañana.','Son las cinco y media.','Me gusta el café.'],answer:'Es alta y lleva una camisa blanca.',note:'稳定特征加当天穿着能帮助辨认人物。'}
+    },
+    {
+      id:'l32', title:'单元复习：根据照片介绍人物', minutes:14, checkpoint:true,
+      canDo:'用关系、外貌、性格和状态连续描述一个人。',
+      words:[
+        {es:'a la izquierda',zh:'在左边',tip:'用于指出照片中的位置。'},
+        {es:'a la derecha',zh:'在右边',tip:'与 izquierda 相对。'},
+        {es:'muy simpático',zh:'非常友好',tip:'muy 放在形容词前。'},
+        {es:'un poco tímida',zh:'有一点害羞',tip:'un poco 可以柔和描述。'},
+        {es:'hoy está contenta',zh:'她今天很开心',tip:'当天状态用 estar。'}
+      ],
+      grammar:{title:'描述顺序让表达更清楚',body:'先说明人物关系和位置，再说稳定特征，最后补充当天状态或穿着。',examples:['A la izquierda está mi hermano.','Es alto y simpático.','Hoy lleva una camiseta azul.']},
+      sentence:{es:'A la derecha está mi madre; es amable y hoy está muy contenta.',zh:'右边是我妈妈；她很和善，今天很开心。'},
+      order:{tokens:['Mi','hermano','tiene','el','pelo','corto','y','es','tímido.'],answer:'Mi hermano tiene el pelo corto y es tímido.',zh:'我兄弟留着短发，而且有些害羞。'},
+      dialogue:{context:'对方问照片里左边的人是谁。',prompt:'选择完整回应。',choices:['Es mi prima; es baja y lleva un vestido verde.','Son las tres menos cuarto.','Quiero dos cafés.','Voy al centro en metro.'],answer:'Es mi prima; es baja y lleva un vestido verde.',note:'先说明关系，再补充外貌与穿着。'}
+    }
+  ],
+  u5: [
+    {
+      id:'l33', title:'现在时：我、你、他都能说', minutes:13,
+      canDo:'用规则现在时谈自己和他人的日常活动。',
+      words:[
+        {es:'trabajo / trabajas',zh:'我工作 / 你工作',tip:'-ar 动词的我、你形式常为 -o、-as。'},
+        {es:'come / comemos',zh:'他吃 / 我们吃',tip:'-er 动词注意词尾变化。'},
+        {es:'vivo / vive',zh:'我住 / 他住',tip:'-ir 动词的我形式也以 -o 结尾。'},
+        {es:'¿Qué haces?',zh:'你做什么？',tip:'hacer 的 tú 形式是 haces。'},
+        {es:'normalmente',zh:'通常',tip:'可放在句首或动词前后。'}
+      ],
+      grammar:{title:'先掌握高频人称',body:'A1 阶段优先熟练 yo、tú、él/ella 和 nosotros 的现在时，不必一次背完所有表格。',examples:['Yo trabajo.','Tú estudias.','Ella vive aquí.','Comemos a las dos.']},
+      sentence:{es:'Normalmente trabajo por la mañana y estudio por la tarde.',zh:'我通常上午工作，下午学习。'},
+      order:{tokens:['¿Qué','haces','después','de','clase?'],answer:'¿Qué haces después de clase?',zh:'你下课后做什么？'},
+      dialogue:{context:'朋友问：¿Trabajas los sábados?',prompt:'你想说“不是，我星期六学习”。',choices:['No, estudio los sábados.','Sí, soy sábado.','No, estoy trabajo.','Tengo los sábados.'],answer:'No, estudio los sábados.',note:'否定句把 no 放在变位动词前。'}
+    },
+    {
+      id:'l34', title:'起床以后：反身动词与顺序', minutes:13,
+      canDo:'按顺序描述起床、洗漱、出门和睡觉。',
+      words:[
+        {es:'me levanto',zh:'我起床',tip:'me 与 yo 搭配。'},
+        {es:'me ducho',zh:'我洗澡',tip:'反身动作前保留 me。'},
+        {es:'me visto',zh:'我穿衣服',tip:'vestirse 的词干在这里发生变化。'},
+        {es:'salgo de casa',zh:'我出门',tip:'salir 的 yo 形式是 salgo。'},
+        {es:'primero / después',zh:'首先 / 然后',tip:'帮助听者跟上顺序。'}
+      ],
+      grammar:{title:'反身动作需要 me、te、se',body:'描述自己给自己完成的日常动作时，yo 常与 me 搭配，tú 与 te，él/ella 与 se。',examples:['Me levanto a las siete.','¿A qué hora te duchas?','Se acuesta tarde.']},
+      sentence:{es:'Primero me ducho y después me visto.',zh:'我先洗澡，然后穿衣服。'},
+      order:{tokens:['Después','del','desayuno,','salgo','de','casa.'],answer:'Después del desayuno, salgo de casa.',zh:'早餐后，我出门。'},
+      dialogue:{context:'别人问：¿Qué haces primero por la mañana?',prompt:'你先起床，然后洗澡。',choices:['Primero me levanto y después me ducho.','Primero soy las siete.','Después tengo mañana.','Me gusta la cama azul.'],answer:'Primero me levanto y después me ducho.',note:'primero 与 después 清楚标记动作顺序。'}
+    },
+    {
+      id:'l35', title:'单元复习：讲清我的一天', minutes:14, checkpoint:true,
+      canDo:'用时间、频率和顺序词描述完整的一天。',
+      words:[
+        {es:'todos los días',zh:'每天',tip:'表示稳定频率。'},
+        {es:'casi siempre',zh:'几乎总是',tip:'频率高于 a veces。'},
+        {es:'de vez en cuando',zh:'偶尔',tip:'很常用的频率词块。'},
+        {es:'antes de',zh:'在……之前',tip:'后接名词或不定式。'},
+        {es:'después de',zh:'在……之后',tip:'与 antes de 相对。'}
+      ],
+      grammar:{title:'时间 + 顺序 + 频率',body:'把几点、先后顺序和频率放进同一段描述，短句就会变成连贯表达。',examples:['Me levanto a las siete.','Después desayuno.','De vez en cuando trabajo en casa.']},
+      sentence:{es:'Todos los días me levanto a las siete, desayuno y voy al trabajo.',zh:'我每天七点起床，吃早餐，然后去上班。'},
+      order:{tokens:['Antes','de','dormir,','leo','de','vez','en','cuando.'],answer:'Antes de dormir, leo de vez en cuando.',zh:'睡前我偶尔会阅读。'},
+      dialogue:{context:'同学问你平日几点睡。',prompt:'你通常十一点睡，但周末晚一点。',choices:['Normalmente me acuesto a las once, pero los fines de semana más tarde.','Soy once todos los días.','Tengo dormir en fin de semana.','Voy a la cama azul.'],answer:'Normalmente me acuesto a las once, pero los fines de semana más tarde.',note:'normalmente 和 pero 能把常态与例外连接起来。'}
+    }
+  ],
+  u6: [
+    {
+      id:'l36', title:'食物、数量与我的偏好', minutes:13,
+      canDo:'表达喜欢、不喜欢、饥渴和简单饮食选择。',
+      words:[
+        {es:'Tengo hambre.',zh:'我饿了。',tip:'西语用 tener hambre，不用 estar。'},
+        {es:'Tengo sed.',zh:'我渴了。',tip:'固定搭配 tener sed。'},
+        {es:'Me gusta el pescado.',zh:'我喜欢鱼。',tip:'单数事物或动作常用 gusta。'},
+        {es:'Me gustan las frutas.',zh:'我喜欢水果。',tip:'复数事物常用 gustan。'},
+        {es:'No como carne.',zh:'我不吃肉。',tip:'no 放在动词前。'}
+      ],
+      grammar:{title:'gusta 还是 gustan，看后面的事物',body:'后面是单数名词或动作时用 gusta；后面是复数名词时用 gustan。',examples:['Me gusta el café.','Me gusta cocinar.','Me gustan las verduras.']},
+      sentence:{es:'Tengo hambre, pero no como carne.',zh:'我饿了，但我不吃肉。'},
+      order:{tokens:['Me','gustan','las','verduras','y','el','pescado.'],answer:'Me gustan las verduras y el pescado.',zh:'我喜欢蔬菜和鱼。'},
+      dialogue:{context:'服务员问：¿Carne o pescado?',prompt:'你不吃肉，想选鱼。',choices:['Pescado, por favor. No como carne.','Tengo una camisa verde.','Son las ocho.','Voy en metro.'],answer:'Pescado, por favor. No como carne.',note:'先做选择，再说明饮食限制，表达清楚而礼貌。'}
+    },
+    {
+      id:'l37', title:'从看菜单到结账', minutes:14,
+      canDo:'索要菜单、询问菜品、点单并正确结账。',
+      words:[
+        {es:'La carta, por favor.',zh:'请给我菜单。',tip:'la carta 指单点菜单。'},
+        {es:'¿Qué lleva?',zh:'里面有什么？',tip:'询问菜品配料。'},
+        {es:'Para mí…',zh:'我要……',tip:'点单时很自然的开头。'},
+        {es:'Sin cebolla, por favor.',zh:'请不要洋葱。',tip:'sin + 食材表示去掉。'},
+        {es:'La cuenta, por favor.',zh:'请结账。',tip:'用餐结束的高频表达。'}
+      ],
+      grammar:{title:'con 是加，sin 是不要',body:'点餐时用 con 添加或说明配料，用 sin 去掉配料；无需组织复杂句。',examples:['café con leche','agua sin gas','una ensalada sin cebolla']},
+      sentence:{es:'Para mí, una ensalada sin cebolla y agua sin gas.',zh:'我要一份不加洋葱的沙拉和无气泡水。'},
+      order:{tokens:['¿Qué','lleva','el','plato','del','día?'],answer:'¿Qué lleva el plato del día?',zh:'今日套餐里有什么？'},
+      dialogue:{context:'吃完饭后服务员经过。',prompt:'怎样礼貌结账？',choices:['La cuenta, por favor.','La talla mediana.','Estoy a la derecha.','Mañana hace sol.'],answer:'La cuenta, por favor.',note:'la cuenta 是账单；加 por favor 即可礼貌提出请求。'}
+    },
+    {
+      id:'l38', title:'单元复习：完成一次点餐', minutes:15, checkpoint:true,
+      canDo:'从询问、选择、调整配料到付款完成整段餐厅交流。',
+      words:[
+        {es:'¿Tiene una mesa para uno?',zh:'有一人桌吗？',tip:'进入餐厅时询问座位。'},
+        {es:'¿Cuál recomienda?',zh:'您推荐哪一个？',tip:'在几个选择中询问推荐。'},
+        {es:'Está muy rico.',zh:'很好吃。',tip:'评价当前食物常用 estar rico。'},
+        {es:'¿Puedo pagar con tarjeta?',zh:'可以刷卡吗？',tip:'pagar con tarjeta 表示刷卡支付。'},
+        {es:'Algo más',zh:'别的；其他东西',tip:'¿Algo más? 是店员常问的话。'}
+      ],
+      grammar:{title:'用一组固定词块完成交易',body:'餐厅对话高度可预测。熟练座位、菜单、点单、调整和付款五组词块，比背长句更实用。',examples:['Una mesa para uno.','Para mí, la sopa.','¿Puedo pagar con tarjeta?']},
+      sentence:{es:'Está muy rico. La cuenta, por favor.',zh:'很好吃，请结账。'},
+      order:{tokens:['¿Puedo','pagar','con','tarjeta?'],answer:'¿Puedo pagar con tarjeta?',zh:'我可以刷卡吗？'},
+      dialogue:{context:'店员问：¿Algo más?',prompt:'你不需要别的了。',choices:['No, nada más, gracias.','Sí, soy de China.','Está al lado del banco.','Me levanto temprano.'],answer:'No, nada más, gracias.',note:'nada más 表示“没有别的”，适合结束点单。'}
+    }
+  ]
+});
+
+Object.assign(A1_DEEPENING, {
+  u7: [
+    {
+      id:'l39', title:'hay 还是 está：城市里有什么', minutes:13,
+      canDo:'询问某地有没有某设施，并说明它的具体位置。',
+      words:[
+        {es:'Hay un banco.',zh:'有一家银行。',tip:'hay 用于第一次说明某物存在。'},
+        {es:'El banco está aquí.',zh:'银行就在这里。',tip:'estar 用于已知事物的具体位置。'},
+        {es:'cerca de',zh:'在……附近',tip:'后面接地点。'},
+        {es:'lejos de',zh:'离……很远',tip:'与 cerca de 相对。'},
+        {es:'al lado de',zh:'在……旁边',tip:'很常用的相对位置表达。'}
+      ],
+      grammar:{title:'hay 介绍存在，estar 定位',body:'第一次问“有没有”用 hay；已经知道是哪一个地点，再问“在哪里”用 estar。',examples:['¿Hay una farmacia cerca?','Sí, hay una.','La farmacia está al lado del banco.']},
+      sentence:{es:'Hay una farmacia cerca y está al lado del supermercado.',zh:'附近有一家药店，就在超市旁边。'},
+      order:{tokens:['¿Hay','una','estación','cerca','de','aquí?'],answer:'¿Hay una estación cerca de aquí?',zh:'这附近有车站吗？'},
+      dialogue:{context:'别人问：¿Dónde está el banco?',prompt:'你知道银行在广场旁边。',choices:['Está al lado de la plaza.','Hay un banco.','Es una plaza.','Tengo una estación.'],answer:'Está al lado de la plaza.',note:'问题询问已知银行的位置，因此用 está。'}
+    },
+    {
+      id:'l40', title:'转弯、过街与购买车票', minutes:14,
+      canDo:'听懂基础方向指示，并购买一张简单交通票。',
+      words:[
+        {es:'todo recto',zh:'一直往前',tip:'问路回答中的固定词块。'},
+        {es:'gira a la derecha',zh:'右转',tip:'girar a + 方向。'},
+        {es:'cruza la calle',zh:'穿过马路',tip:'cruzar 表示横穿。'},
+        {es:'un billete de ida',zh:'一张单程票',tip:'ida 表示去程。'},
+        {es:'¿De qué andén sale?',zh:'从哪个站台出发？',tip:'andén 指火车或地铁站台。'}
+      ],
+      grammar:{title:'方向指令先作为词块掌握',body:'A1 可以先整体理解 sigue、gira、cruza 等高频指令，不必立即背完整命令式变化。',examples:['Sigue todo recto.','Gira a la izquierda.','Cruza la plaza.']},
+      sentence:{es:'Sigue todo recto y gira a la derecha en el banco.',zh:'一直走，到银行那里右转。'},
+      order:{tokens:['Quiero','un','billete','de','ida','a','Madrid.'],answer:'Quiero un billete de ida a Madrid.',zh:'我想买一张去马德里的单程票。'},
+      dialogue:{context:'售票员问：¿Ida o ida y vuelta?',prompt:'你只需要单程。',choices:['Solo ida, por favor.','A la derecha.','Está muy lejos.','Voy a las ocho.'],answer:'Solo ida, por favor.',note:'solo ida 简洁明确地表示只买单程。'}
+    },
+    {
+      id:'l41', title:'单元复习：从酒店到车站', minutes:15, checkpoint:true,
+      canDo:'问到车站的路线、确认距离并买到合适车票。',
+      words:[
+        {es:'¿Cómo llego a…?',zh:'我怎么到……？',tip:'询问前往某地的路线。'},
+        {es:'¿Está lejos?',zh:'远吗？',tip:'确认距离。'},
+        {es:'a pie',zh:'步行',tip:'ir a pie 表示走路去。'},
+        {es:'en metro',zh:'乘地铁',tip:'交通工具前常用 en。'},
+        {es:'¿A qué hora sale?',zh:'几点出发？',tip:'询问班次时间。'}
+      ],
+      grammar:{title:'路线对话要确认三个信息',body:'目的地、交通方式和时间是最重要的三项。重复其中的数字或站名能降低误会。',examples:['¿Cómo llego a la estación?','¿Voy a pie o en metro?','¿Sale a las nueve?']},
+      sentence:{es:'La estación está lejos; es mejor ir en metro.',zh:'车站很远，最好乘地铁去。'},
+      order:{tokens:['¿A','qué','hora','sale','el','tren','a','Sevilla?'],answer:'¿A qué hora sale el tren a Sevilla?',zh:'去塞维利亚的火车几点出发？'},
+      dialogue:{context:'工作人员说火车 9:15 从 4 号站台出发。',prompt:'怎样确认关键信息？',choices:['A las nueve y cuarto, andén cuatro, ¿verdad?','Quiero una camisa pequeña.','Mi hermana es médica.','Está muy rico.'],answer:'A las nueve y cuarto, andén cuatro, ¿verdad?',note:'重复时间和站台并加 ¿verdad?，可以确认你听对了。'}
+    }
+  ],
+  u8: [
+    {
+      id:'l42', title:'房间、家具与精确位置', minutes:13,
+      canDo:'描述房间里的基本家具及它们的位置。',
+      words:[
+        {es:'el dormitorio',zh:'卧室',tip:'也常听到 la habitación。'},
+        {es:'el salón',zh:'客厅',tip:'部分地区也用 la sala。'},
+        {es:'encima de',zh:'在……上面',tip:'强调上方位置。'},
+        {es:'debajo de',zh:'在……下面',tip:'与 encima de 相对。'},
+        {es:'entre',zh:'在……之间',tip:'常连接两个参照物。'}
+      ],
+      grammar:{title:'位置词后常接 de',body:'encima、debajo、delante、detrás 等位置词后用 de 连接参照物；de + el 合并成 del。',examples:['encima de la mesa','debajo de la cama','delante del sofá']},
+      sentence:{es:'La lámpara está encima de la mesa, al lado de la cama.',zh:'灯在桌子上，在床旁边。'},
+      order:{tokens:['El','sofá','está','entre','la','mesa','y','la','ventana.'],answer:'El sofá está entre la mesa y la ventana.',zh:'沙发在桌子和窗户之间。'},
+      dialogue:{context:'别人问钥匙在哪里，你看见它在沙发下面。',prompt:'怎样回答？',choices:['Está debajo del sofá.','Hay un sofá grande.','Es una llave nueva.','Tengo un dormitorio.'],answer:'Está debajo del sofá.',note:'钥匙是已知物品，用 estar 加精确位置。'}
+    },
+    {
+      id:'l43', title:'这是我的：拥有、需要与借用', minutes:13,
+      canDo:'说明物品属于谁，并提出简单借用或需求。',
+      words:[
+        {es:'Es mío / mía.',zh:'是我的。',tip:'形式与所指物品的性别配合。'},
+        {es:'¿Es tuyo?',zh:'是你的吗？',tip:'指阳性单数物品。'},
+        {es:'Necesito una toalla.',zh:'我需要一条毛巾。',tip:'necesitar 后直接接所需物品。'},
+        {es:'¿Me prestas…?',zh:'你能借我……吗？',tip:'熟人之间常用。'},
+        {es:'Aquí tienes.',zh:'给你。',tip:'递给对方物品时使用。'}
+      ],
+      grammar:{title:'名词在场用 mi，不重复名词用 mío',body:'mi libro 表示“我的书”；如果名词已经明确，可以只说 Es mío。mío、mía、míos、mías要与物品配合。',examples:['mi teléfono','La mochila es mía.','Los libros son tuyos.']},
+      sentence:{es:'Necesito un bolígrafo. ¿Me prestas el tuyo?',zh:'我需要一支笔。你能把你的借给我吗？'},
+      order:{tokens:['Esta','mochila','no','es','mía.'],answer:'Esta mochila no es mía.',zh:'这个背包不是我的。'},
+      dialogue:{context:'朋友把你要借的书递给你并说 Aquí tienes。',prompt:'最自然的回应是什么？',choices:['Muchas gracias.','Está en la cocina.','Son mis padres.','Hace frío.'],answer:'Muchas gracias.',note:'收到物品后直接感谢即可。'}
+    },
+    {
+      id:'l44', title:'单元复习：描述并解决居家需要', minutes:15, checkpoint:true,
+      canDo:'描述住房、定位物品，并礼貌提出简单需求。',
+      words:[
+        {es:'Vivo en un piso pequeño.',zh:'我住在一套小公寓里。',tip:'西班牙常用 piso，拉美常见 apartamento。'},
+        {es:'Hay dos dormitorios.',zh:'有两间卧室。',tip:'hay 不随数量变化。'},
+        {es:'No funciona.',zh:'坏了；不能用。',tip:'报告设备问题的实用句。'},
+        {es:'Falta una toalla.',zh:'少一条毛巾。',tip:'faltar 表示缺少。'},
+        {es:'¿Puede traer otra?',zh:'您能再拿一条/一个吗？',tip:'otra 指同类的另一个阴性物品。'}
+      ],
+      grammar:{title:'先说明问题，再提出请求',body:'居住或酒店场景中，先用 No funciona / Falta… 描述问题，再用 ¿Puede…? 提出解决办法。',examples:['La luz no funciona.','Falta una silla.','¿Puede traer otra?']},
+      sentence:{es:'La ducha no funciona y falta una toalla.',zh:'淋浴坏了，而且少一条毛巾。'},
+      order:{tokens:['Perdón,','¿puede','traer','otra','toalla?'],answer:'Perdón, ¿puede traer otra toalla?',zh:'不好意思，您能再拿一条毛巾吗？'},
+      dialogue:{context:'酒店房间的灯坏了。',prompt:'怎样清楚报告？',choices:['La luz de la habitación no funciona.','Me gusta la luz azul.','Hay una habitación en Madrid.','La cuenta, por favor.'],answer:'La luz de la habitación no funciona.',note:'指出具体物品并用 no funciona，问题最清楚。'}
+    }
+  ],
+  u9: [
+    {
+      id:'l45', title:'休闲、运动与会不会', minutes:13,
+      canDo:'谈喜欢的休闲活动，并说明会不会做某事。',
+      words:[
+        {es:'jugar al fútbol',zh:'踢足球',tip:'jugar + a + el 合并成 al。'},
+        {es:'hacer senderismo',zh:'徒步',tip:'许多活动与 hacer 搭配。'},
+        {es:'ir al cine',zh:'去电影院',tip:'ir + a + el 合并成 al。'},
+        {es:'sé nadar',zh:'我会游泳',tip:'saber + 不定式表示掌握技能。'},
+        {es:'no sé bailar',zh:'我不会跳舞',tip:'否定词 no 放在 sé 前。'}
+      ],
+      grammar:{title:'会做某事：saber + 不定式',body:'表达掌握某项技能时用 saber + 动词原形；表达可能或有能力做时常用 poder。',examples:['Sé cocinar.','No sé esquiar.','¿Puedes venir mañana?']},
+      sentence:{es:'Me gusta hacer senderismo, pero no sé esquiar.',zh:'我喜欢徒步，但不会滑雪。'},
+      order:{tokens:['¿Sabes','jugar','al','tenis?'],answer:'¿Sabes jugar al tenis?',zh:'你会打网球吗？'},
+      dialogue:{context:'朋友邀请你去游泳，但你不会游泳。',prompt:'怎样回应最清楚？',choices:['Gracias, pero no sé nadar.','No, soy una piscina.','Tengo el cine mañana.','Está debajo del agua.'],answer:'Gracias, pero no sé nadar.',note:'先感谢，再用 pero 说明限制，既礼貌又清楚。'}
+    },
+    {
+      id:'l46', title:'周末计划与发出邀请', minutes:14,
+      canDo:'用 ir a 表达近期计划，并邀请、接受或婉拒。',
+      words:[
+        {es:'voy a descansar',zh:'我要休息',tip:'ir a + 不定式表示近期计划。'},
+        {es:'¿Quieres venir?',zh:'你想一起来吗？',tip:'直接而自然的邀请。'},
+        {es:'¡Claro!',zh:'当然！',tip:'积极接受邀请。'},
+        {es:'Lo siento, no puedo.',zh:'抱歉，我不行。',tip:'礼貌拒绝并说明不能。'},
+        {es:'Quizá otro día.',zh:'也许改天。',tip:'为婉拒留下余地。'}
+      ],
+      grammar:{title:'ir a + 动词原形表示计划',body:'voy、vas、va 加 a 和动词原形，可以表达已经想到或准备做的近期计划。',examples:['Voy a estudiar.','¿Vas a salir?','Vamos a comer juntos.']},
+      sentence:{es:'El sábado voy a ir al cine con unos amigos.',zh:'星期六我要和几个朋友去看电影。'},
+      order:{tokens:['¿Quieres','venir','con','nosotros','el','domingo?'],answer:'¿Quieres venir con nosotros el domingo?',zh:'你星期天想和我们一起来吗？'},
+      dialogue:{context:'朋友邀请你周六吃饭，但你要工作。',prompt:'怎样礼貌拒绝？',choices:['Lo siento, el sábado no puedo; voy a trabajar.','Sí, tengo una mesa.','Hace sol en el trabajo.','Voy a la derecha.'],answer:'Lo siento, el sábado no puedo; voy a trabajar.',note:'先表达遗憾，再说明具体原因，回应完整自然。'}
+    },
+    {
+      id:'l47', title:'单元复习：根据天气安排周末', minutes:15, checkpoint:true,
+      canDo:'谈天气、喜好与能力，并商定一个周末计划。',
+      words:[
+        {es:'¿Qué tiempo va a hacer?',zh:'天气会怎样？',tip:'询问近期天气预报。'},
+        {es:'Si hace buen tiempo…',zh:'如果天气好……',tip:'A1 可先整体掌握这个条件词块。'},
+        {es:'podemos ir al parque',zh:'我们可以去公园',tip:'podemos + 不定式提出可能方案。'},
+        {es:'prefiero quedarme en casa',zh:'我更想待在家',tip:'preferir 表达选择偏好。'},
+        {es:'Entonces, a las cinco.',zh:'那就五点。',tip:'entonces 用来推进决定。'}
+      ],
+      grammar:{title:'提议、偏好、决定三步走',body:'先用 podemos 提议，再用 prefiero 表达偏好，最后用 entonces 确认共同决定。',examples:['Podemos ir al cine.','Prefiero el sábado.','Entonces, nos vemos a las seis.']},
+      sentence:{es:'Si hace buen tiempo, podemos hacer senderismo.',zh:'如果天气好，我们可以去徒步。'},
+      order:{tokens:['Prefiero','ir','al','cine','porque','hace','frío.'],answer:'Prefiero ir al cine porque hace frío.',zh:'我更想去看电影，因为天气冷。'},
+      dialogue:{context:'周日会下雨，朋友提议去公园。',prompt:'提出更合适的选择。',choices:['Va a llover; prefiero ir al cine.','La lluvia está debajo del parque.','Sé una película.','Tengo domingo.'],answer:'Va a llover; prefiero ir al cine.',note:'先说明天气，再用 prefiero 提出替代方案。'}
+    }
+  ],
+  u10: [
+    {
+      id:'l48', title:'身体、疼痛与持续时间', minutes:14,
+      canDo:'说明哪里不舒服、有什么症状以及持续多久。',
+      words:[
+        {es:'Me duele la cabeza.',zh:'我头疼。',tip:'单数部位用 duele。'},
+        {es:'Me duelen los ojos.',zh:'我眼睛疼。',tip:'复数部位用 duelen。'},
+        {es:'Tengo fiebre.',zh:'我发烧。',tip:'症状常与 tener 搭配。'},
+        {es:'Estoy mareada.',zh:'我头晕。',tip:'女性说 mareada，男性说 mareado。'},
+        {es:'desde ayer',zh:'从昨天开始',tip:'说明症状开始时间。'}
+      ],
+      grammar:{title:'duele 还是 duelen，看疼的部位',body:'疼痛部位是单数用 duele，复数用 duelen；很多其他症状直接用 tener。',examples:['Me duele el estómago.','Me duelen las piernas.','Tengo tos.']},
+      sentence:{es:'Me duele la garganta y tengo fiebre desde ayer.',zh:'我从昨天开始嗓子疼并发烧。'},
+      order:{tokens:['Me','duelen','las','piernas','desde','esta','mañana.'],answer:'Me duelen las piernas desde esta mañana.',zh:'我从今天早上开始腿疼。'},
+      dialogue:{context:'医生问：¿Desde cuándo?',prompt:'症状从昨晚开始。',choices:['Desde anoche.','En la farmacia.','Dos pastillas.','Estoy de China.'],answer:'Desde anoche.',note:'¿Desde cuándo? 询问开始时间，回答用 desde + 时间点。'}
+    },
+    {
+      id:'l49', title:'药店、紧急情况与酒店问题', minutes:15,
+      canDo:'在药店说明需要，在紧急时求助，并报告旅行住宿问题。',
+      words:[
+        {es:'Necesito algo para el dolor.',zh:'我需要缓解疼痛的药。',tip:'algo para + 症状/用途。'},
+        {es:'¿Cómo se toma?',zh:'这个怎么服用？',tip:'询问服用方法。'},
+        {es:'Llame a una ambulancia.',zh:'请叫救护车。',tip:'紧急情况下的明确指令。'},
+        {es:'He perdido mi pasaporte.',zh:'我的护照丢了。',tip:'先作为完整紧急词块掌握。'},
+        {es:'La reserva está a mi nombre.',zh:'预订登记的是我的名字。',tip:'酒店入住时确认预订。'}
+      ],
+      grammar:{title:'紧急时优先说需求和关键信息',body:'不追求复杂语法，先说 Necesito…、He perdido… 或 No funciona，再补充地点、姓名和时间。',examples:['Necesito un médico.','He perdido mi móvil.','La habitación no tiene agua caliente.']},
+      sentence:{es:'He perdido mi pasaporte y necesito ayuda.',zh:'我的护照丢了，我需要帮助。'},
+      order:{tokens:['La','reserva','está','a','nombre','de','Penny.'],answer:'La reserva está a nombre de Penny.',zh:'预订登记在 Penny 名下。'},
+      dialogue:{context:'药剂师把药给你，但你不知道怎么服用。',prompt:'最重要的问题是什么？',choices:['¿Cómo se toma?','¿Dónde está el museo?','¿Qué talla tiene?','¿A qué hora sale el tren?'],answer:'¿Cómo se toma?',note:'拿到药后应确认服用方法；具体医疗建议应遵循专业人员说明。'}
+    },
+    {
+      id:'l50', title:'A1 精学终点：独立完成一天旅程', minutes:18, checkpoint:true,
+      canDo:'综合完成自我介绍、安排时间、出行、点餐、住宿与简单求助。',
+      words:[
+        {es:'Primero…',zh:'首先……',tip:'开始叙述步骤。'},
+        {es:'Después…',zh:'然后……',tip:'推进事件顺序。'},
+        {es:'porque…',zh:'因为……',tip:'给出一个简单理由。'},
+        {es:'pero…',zh:'但是……',tip:'连接转折信息。'},
+        {es:'Al final…',zh:'最后……',tip:'结束一段连续表达。'}
+      ],
+      grammar:{title:'把短句组织成一段能完成任务的话',body:'A1 的终点不是背完术语，而是能用 primero、después、pero、porque、al final 把熟悉内容连起来。',examples:['Primero voy a la estación.','Después compro un billete.','Al final llego al hotel.']},
+      sentence:{es:'Primero voy a la estación, después compro un billete y al final llego al hotel.',zh:'我先去车站，然后买票，最后到达酒店。'},
+      order:{tokens:['No','entiendo','porque','habla','muy','rápido.'],answer:'No entiendo porque habla muy rápido.',zh:'我没听懂，因为他说得太快。'},
+      dialogue:{context:'旅途中你没听懂工作人员的话，后面还有人在等。',prompt:'选择既礼貌又能解决问题的回应。',choices:['Perdón, no entiendo. ¿Puede repetir más despacio?','Soy estudiante y tengo una hermana.','La cuenta está debajo de la mesa.','Mañana llevo una camisa azul.'],answer:'Perdón, no entiendo. ¿Puede repetir más despacio?',note:'先说明没听懂，再提出具体请求，是 A1 独立互动的关键能力。'}
+    }
+  ]
+});
+
+window.COURSE.units.forEach((unit) => {
+  const extraLessons = A1_DEEPENING[unit.id] || [];
+  unit.lessons.push(...extraLessons);
+});
+window.COURSE.title = '西班牙语 A1 精学路线';
+window.COURSE.subtitle = '50 节微课：从零基础到能处理熟悉的日常交流';
+  </script>
+
+  <script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const allLessons = COURSE.units.flatMap((unit, unitIndex) =>
+    unit.lessons.map((lesson, lessonIndex) => ({...lesson, unit, unitIndex, lessonIndex}))
+  );
+  const soundSvg = () => $('soundIcon').innerHTML;
+  const storageKey = 'pennySpanishA1V2';
+  const legacy = JSON.parse(localStorage.getItem('pennySpanishProgress') || '{}');
+  const saved = JSON.parse(localStorage.getItem(storageKey) || 'null') || {
+    xp: Number(legacy.xp || 0), streak: Number(legacy.streak || 1), lastDay: legacy.lastDay || null,
+    completed: {}, wrong: [], currentId: 'l1'
+  };
+  const state = { lesson:null, step:0, score:0, total:0, mistakes:0, review:false, reviewItems:[] };
+  const stageNames = ['目标','认识','规律','回忆','配对','听辨','读句','造句','对话','完成'];
+
+  function persist() { localStorage.setItem(storageKey, JSON.stringify(saved)); }
+  function shuffle(items) {
+    const a = [...items];
+    for (let i=a.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+    return a;
+  }
+  function escapeHtml(value) {
+    return String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+  }
+  function speak(text, rate=.86) {
+    if (!('speechSynthesis' in window)) return;
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text); u.lang='es-ES'; u.rate=rate; u.pitch=1;
+    const voice = speechSynthesis.getVoices().find(v => v.lang.toLowerCase().startsWith('es'));
+    if (voice) u.voice=voice;
+    speechSynthesis.speak(u);
+  }
+  function firstIncompleteIndex() {
+    const index = allLessons.findIndex(l => !saved.completed[l.id]);
+    return index === -1 ? allLessons.length - 1 : index;
+  }
+  function isUnlocked(index) { return index <= firstIncompleteIndex() || !!saved.completed[allLessons[index].id]; }
+  function nextLesson() { return allLessons[firstIncompleteIndex()] || allLessons[0]; }
+
+  function renderDashboard() {
+    $('dashboard').hidden=false; $('lessonScreen').hidden=true;
+    const completeCount = Object.keys(saved.completed).filter(id => allLessons.some(l => l.id===id)).length;
+    const percent = Math.round(completeCount/allLessons.length*100);
+    const next = nextLesson();
+    $('coursePercent').textContent=`${percent}%`;
+    $('courseProgress').style.width=`${percent}%`;
+    $('unitCount').textContent=COURSE.units.length;
+    $('lessonCount').textContent=allLessons.length;
+    $('nextLessonTitle').textContent = completeCount===allLessons.length ? 'A1 路线已完成，可以自由复习' : `${next.unit.number}.${next.lessonIndex+1} ${next.title}`;
+    $('nextLessonGoal').textContent = completeCount===allLessons.length ? '你已经走完整条路线。继续重练薄弱课程，让表达更稳定。' : next.canDo;
+    $('continueBtn').textContent = completeCount ? (completeCount===allLessons.length ? '重练终点关' : '继续学习') : '开始第一课';
+    $('xp').textContent=saved.xp; $('streak').textContent=saved.streak;
+    $('reviewCount').textContent=saved.wrong.length;
+    $('reviewBtn').hidden=saved.wrong.length===0;
+    $('courseMap').innerHTML='';
+    COURSE.units.forEach((unit, ui) => {
+      const completedInUnit=unit.lessons.filter(l=>saved.completed[l.id]).length;
+      const wrap=document.createElement('article'); wrap.className='unit-card'; wrap.style.setProperty('--unit-color',unit.color);
+      wrap.innerHTML=`<div class="unit-head"><span class="unit-icon">${unit.icon}</span><div class="unit-copy"><small>UNIT ${unit.number}</small><h3>${escapeHtml(unit.title)}</h3><p>${escapeHtml(unit.goal)}</p></div><span class="unit-state">${completedInUnit}/${unit.lessons.length}</span></div><div class="lesson-list"></div>`;
+      const list=wrap.querySelector('.lesson-list');
+      unit.lessons.forEach((lesson, li) => {
+        const globalIndex=allLessons.findIndex(l=>l.id===lesson.id);
+        const unlocked=isUnlocked(globalIndex); const complete=saved.completed[lesson.id]; const current=globalIndex===firstIncompleteIndex();
+        const btn=document.createElement('button');
+        btn.className=`lesson-node ${complete?'complete':''} ${current&&!complete?'current':''}`; btn.disabled=!unlocked;
+        btn.innerHTML=`<span class="node-index">${complete?'✓':globalIndex+1}</span><span class="node-copy"><strong>${escapeHtml(lesson.title)}</strong><small>${lesson.minutes} 分钟 · ${lesson.checkpoint?'综合关卡':'微课'}</small></span>${complete?`<span class="node-score">${complete.score}%</span>`:`<span class="lock">${unlocked?'›':'🔒'}</span>`}`;
+        btn.addEventListener('click',()=>startLesson(allLessons[globalIndex])); list.appendChild(btn);
+      });
+      $('courseMap').appendChild(wrap);
+    });
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  function showLesson() {
+    $('dashboard').hidden=true; $('lessonScreen').hidden=false; window.scrollTo({top:0,behavior:'smooth'});
+  }
+  function startLesson(lesson) {
+    state.lesson=lesson; state.step=0; state.score=0; state.total=0; state.mistakes=0; state.review=false;
+    saved.currentId=lesson.id; persist(); showLesson(); renderStage();
+  }
+  function nextStage() { state.step+=1; renderStage(); }
+  function prevStage() { if(state.step>0){state.step-=1;renderStage();} }
+  function updateLessonProgress(total=stageNames.length) {
+    const current=Math.min(state.step+1,total);
+    $('lessonStep').textContent=`${current} / ${total}`;
+    $('lessonProgress').style.width=`${Math.max(5,(state.step/(total-1))*100)}%`;
+    document.querySelector('.lesson-progress').setAttribute('aria-valuenow',Math.round(state.step/(total-1)*100));
+  }
+  function actionButtons(nextLabel='继续') {
+    return `<div class="stage-actions"><button class="secondary-btn" data-action="back">返回</button><button class="primary-btn" data-action="next">${nextLabel}</button></div>`;
+  }
+  function bindNav() {
+    document.querySelector('[data-action="next"]')?.addEventListener('click',nextStage);
+    document.querySelector('[data-action="back"]')?.addEventListener('click',prevStage);
+  }
+  function shell(kicker,title,sub,body,actions='') {
+    $('lessonStage').innerHTML=`<div class="stage-kicker">${kicker}</div><h1>${title}</h1>${sub?`<p class="stage-sub">${sub}</p>`:''}<div class="stage-body">${body}</div>${actions}`;
+  }
+
+  function renderStage() {
+    if (state.review) return renderReview();
+    updateLessonProgress();
+    const l=state.lesson;
+    if(state.step===0) {
+      shell(`UNIT ${l.unit.number} · 第 ${l.lessonIndex+1} 课`,l.title,'先知道这节课结束时，你能做到什么。',`<div class="intro-icon">${l.unit.icon}</div><div class="can-do"><b>学完我能：</b><br>${escapeHtml(l.canDo)}</div>`,actionButtons('开始认识'));
+      bindNav(); return;
+    }
+    if(state.step===1) {
+      const cards=l.words.map(w=>`<div class="word-card"><strong>${escapeHtml(w.es)}</strong><span>${escapeHtml(w.zh)}</span><button class="mini-sound" data-speak="${escapeHtml(w.es)}" aria-label="播放 ${escapeHtml(w.es)}">${soundSvg()}</button><div class="word-tip">发音与用法：${escapeHtml(w.tip)}</div></div>`).join('');
+      shell('先认识',`今天认识 ${l.words.length} 个核心表达`,'每个表达都点一次喇叭，先听，再跟读两遍。',`<div class="word-grid">${cards}</div>`,actionButtons('看看规律'));
+      bindSpeak(); bindNav(); return;
+    }
+    if(state.step===2) {
+      shell('一个规律',escapeHtml(l.grammar.title),'只讲今天马上用得上的部分。',`<div class="grammar-card"><h2>${escapeHtml(l.grammar.title)}</h2><p>${escapeHtml(l.grammar.body)}</p><div class="examples">${l.grammar.examples.map(x=>`<span>${escapeHtml(x)}</span>`).join('')}</div></div>`,actionButtons('先主动回忆'));
+      bindNav(); return;
+    }
+    if(state.step===3) return renderRecall();
+    if(state.step===4) return renderMatch();
+    if(state.step===5) return renderListen();
+    if(state.step===6) return renderMeaning();
+    if(state.step===7) return renderOrder();
+    if(state.step===8) return renderDialogue();
+    finishLesson();
+  }
+
+  function renderRecall() {
+    const l=state.lesson;
+    shell('主动回忆 · 不计分','先试着说，再看答案','看着中文，在心里或出声说出完整西语。想不全也没关系。',`<div class="recall-card"><span>想说：</span><strong>${escapeHtml(l.sentence.zh)}</strong><button class="reveal-btn" id="revealBtn">我想好了，看答案</button><div class="recall-answer" id="recallAnswer" hidden><b>${escapeHtml(l.sentence.es)}</b><button class="mini-sound" data-speak="${escapeHtml(l.sentence.es)}" aria-label="播放答案">${soundSvg()}</button><small>听一遍，再完整跟读两遍。重点是把声音说出来。</small></div></div>`,`<div class="stage-actions"><button class="secondary-btn" data-action="back">返回</button></div>`);
+    bindSpeak(); bindNav();
+    $('revealBtn').addEventListener('click',()=>{
+      $('revealBtn').disabled=true; $('recallAnswer').hidden=false;
+      $('lessonStage').insertAdjacentHTML('beforeend','<div class="stage-actions"><button class="primary-btn" data-action="next">开始配对</button></div>');
+      document.querySelector('[data-action="next"]').addEventListener('click',nextStage);
+    });
+  }
+
+  function bindSpeak() {
+    document.querySelectorAll('[data-speak]').forEach(btn=>btn.addEventListener('click',()=>speak(btn.dataset.speak)));
+  }
+  function renderMatch() {
+    const l=state.lesson; const selected={es:null,zh:null}; let matched=0;
+    shell('热身 · 不计分','把词和意思配成对','先建立“看到就懂”的连接，点错也没关系。',`<div class="match-grid" id="matchGrid"></div><div class="match-status" id="matchStatus">已配对 0 / ${l.words.length}</div>`,'');
+    const items=shuffle(l.words.flatMap((w,i)=>[{side:'es',text:w.es,pair:i},{side:'zh',text:w.zh,pair:i}]));
+    items.forEach(item=>{const btn=document.createElement('button');btn.className='match-item';btn.textContent=item.text;btn.dataset.side=item.side;btn.dataset.pair=item.pair;btn.addEventListener('click',()=>{
+      if(selected[item.side]) selected[item.side].classList.remove('selected'); selected[item.side]=btn; btn.classList.add('selected');
+      if(selected.es&&selected.zh){
+        if(selected.es.dataset.pair===selected.zh.dataset.pair){selected.es.classList.remove('selected');selected.zh.classList.remove('selected');selected.es.classList.add('matched');selected.zh.classList.add('matched');selected.es.disabled=true;selected.zh.disabled=true;matched++;$('matchStatus').textContent=`已配对 ${matched} / ${l.words.length}`;selected.es=null;selected.zh=null;if(matched===l.words.length){setTimeout(()=>{$('lessonStage').insertAdjacentHTML('beforeend',`<div class="stage-actions"><button class="primary-btn" data-action="next">进入听力</button></div>`);document.querySelector('[data-action="next"]').addEventListener('click',nextStage);},250)}}
+        else{const a=selected.es,b=selected.zh;setTimeout(()=>{a.classList.remove('selected');b.classList.remove('selected')},280);selected.es=null;selected.zh=null}
+      }
+    });$('matchGrid').appendChild(btn)});
+  }
+
+  function recordWrong(item) {
+    state.mistakes+=1;
+    const key=`${state.lesson.id}-${item.type}`;
+    if(!saved.wrong.some(w=>w.key===key)) saved.wrong.push({...item,key,lessonId:state.lesson.id,lessonTitle:state.lesson.title});
+    persist();
+  }
+  function renderChoices(choices,answer,note,onResult) {
+    const box=$('answersBox');
+    shuffle(choices).forEach(choice=>{const btn=document.createElement('button');btn.className='answer';btn.textContent=choice;btn.addEventListener('click',()=>{
+      if(box.dataset.locked) return; box.dataset.locked='1'; const ok=choice===answer;
+      [...box.children].forEach(b=>{b.disabled=true;if(b.textContent===answer)b.classList.add('correct')}); if(!ok)btn.classList.add('wrong');
+      onResult(ok); $('lessonStage').insertAdjacentHTML('beforeend',`<div class="feedback ${ok?'good':'bad'}"><div><strong>${ok?'¡Muy bien! 答对了':'正确答案：'+escapeHtml(answer)}</strong><small>${escapeHtml(note)}</small></div><button class="primary-btn" data-action="next"><span>继续</span></button></div>`);document.querySelector('[data-action="next"]').addEventListener('click',nextStage);
+    });box.appendChild(btn)});
+  }
+  function renderListen() {
+    const l=state.lesson,w=l.words[0]; state.total+=1;
+    shell('练习 1 · 听辨','你听到了什么意思？','点蓝色按钮播放，也可以再听慢速。',`<div class="listen-box"><button class="sound-main" id="soundMain" aria-label="播放西班牙语">${soundSvg()}</button><div><b>先不要看文字</b><br><button class="slow-btn" id="slowBtn">🐢 慢速再听</button></div></div><div class="answers" id="answersBox"></div>`,'');
+    $('soundMain').addEventListener('click',()=>speak(w.es)); $('slowBtn').addEventListener('click',()=>speak(w.es,.58));
+    renderChoices(l.words.map(x=>x.zh),w.zh,w.tip,ok=>{if(ok)state.score+=1;else recordWrong({type:'choice',prompt:'🔊 听音选择',speak:w.es,answer:w.zh,choices:l.words.map(x=>x.zh),note:w.tip})});
+  }
+  function sentenceDistractors(l) {
+    return shuffle(allLessons.filter(x=>x.id!==l.id).map(x=>x.sentence.zh)).slice(0,3);
+  }
+  function renderMeaning() {
+    const l=state.lesson; state.total+=1; const choices=[l.sentence.zh,...sentenceDistractors(l)];
+    shell('练习 2 · 读句','选出整句话的意思','不必逐词分析，先抓住你认识的部分。',`<div class="big-prompt">${escapeHtml(l.sentence.es)}</div><button class="slow-btn" data-speak="${escapeHtml(l.sentence.es)}">🔊 听整句</button><div class="answers" id="answersBox"></div>`,'');bindSpeak();
+    renderChoices(choices,l.sentence.zh,l.grammar.body,ok=>{if(ok)state.score+=1;else recordWrong({type:'choice',prompt:l.sentence.es,speak:l.sentence.es,answer:l.sentence.zh,choices,note:l.grammar.body})});
+  }
+  function renderOrder() {
+    const l=state.lesson; state.total+=1; const selected=[];
+    shell('练习 3 · 词块造句','按正确顺序点词块',`目标意思：${escapeHtml(l.order.zh)}。不用键盘，也不考拼写。`,`<div class="sentence-line" id="sentenceLine"></div><div class="token-bank" id="tokenBank"></div><div class="order-tools"><button class="secondary-btn" id="clearOrder">清空</button><button class="check-btn" id="checkOrder" disabled>检查</button></div>`,'');
+    shuffle(l.order.tokens.map((text,id)=>({text,id}))).forEach(token=>{const btn=document.createElement('button');btn.className='token';btn.textContent=token.text;btn.dataset.id=token.id;btn.addEventListener('click',()=>{selected.push(token);btn.classList.add('used');renderSelected()});$('tokenBank').appendChild(btn)});
+    function renderSelected(){const line=$('sentenceLine');line.innerHTML='';selected.forEach((token,i)=>{const b=document.createElement('button');b.className='token';b.textContent=token.text;b.addEventListener('click',()=>{selected.splice(i,1);document.querySelector(`#tokenBank [data-id="${token.id}"]`).classList.remove('used');renderSelected()});line.appendChild(b)});$('checkOrder').disabled=selected.length!==l.order.tokens.length}
+    $('clearOrder').addEventListener('click',()=>{selected.splice(0);document.querySelectorAll('#tokenBank .token').forEach(b=>b.classList.remove('used'));renderSelected()});
+    $('checkOrder').addEventListener('click',()=>{const answer=selected.map(x=>x.text).join(' ');const ok=answer===l.order.answer;if(ok)state.score+=1;else recordWrong({type:'order',prompt:l.order.zh,answer:l.order.answer,tokens:l.order.tokens,note:'按自然语序重新排列这些词块。'});document.querySelectorAll('.token,#clearOrder,#checkOrder').forEach(b=>b.disabled=true);$('lessonStage').insertAdjacentHTML('beforeend',`<div class="feedback ${ok?'good':'bad'}"><div><strong>${ok?'¡Perfecto! 语序正确':'正确句子：'+escapeHtml(l.order.answer)}</strong><small>${escapeHtml(l.order.zh)}</small></div><button class="primary-btn" data-action="next"><span>继续</span></button></div>`);document.querySelector('[data-action="next"]').addEventListener('click',nextStage)});
+  }
+  function renderDialogue() {
+    const l=state.lesson,d=l.dialogue; state.total+=1;
+    shell('练习 4 · 情境对话','在这个情境里怎么回应？','把刚学的表达放进真实交流。',`<div class="context">${escapeHtml(d.context)}</div><div class="big-prompt">${escapeHtml(d.prompt)}</div><div class="answers" id="answersBox"></div>`,'');
+    renderChoices(d.choices,d.answer,d.note,ok=>{if(ok)state.score+=1;else recordWrong({type:'choice',prompt:`${d.context} ${d.prompt}`,answer:d.answer,choices:d.choices,note:d.note})});
+  }
+  function finishLesson() {
+    const l=state.lesson; const score=state.total?Math.round(state.score/state.total*100):100;
+    const existing=saved.completed[l.id]; saved.completed[l.id]={score:Math.max(score,existing?.score||0),date:new Date().toISOString()};
+    const idx=allLessons.findIndex(x=>x.id===l.id); const next=allLessons[idx+1]; if(next)saved.currentId=next.id;
+    saved.xp+=40+state.score*10; updateStreak(); persist();
+    updateLessonProgress(); $('lessonProgress').style.width='100%';
+    shell('本课完成',score>=75?'¡Muy bien! 学会了': '完成了，错题已经留下',score>=75?l.canDo:'不用卡在这里。下一课已解锁，错题会在复习区等你。',`<div class="summary"><div class="summary-icon">${score>=75?'🌞':'🌱'}</div><div class="score-ring">${score}%</div><div class="summary-list"><span>⚡ +${40+state.score*10} XP</span><span>答对 ${state.score}/${state.total}</span><span>错题 ${state.mistakes}</span></div></div>`,`<div class="stage-actions"><button class="secondary-btn" data-action="home">课程地图</button><button class="primary-btn" data-action="continue">${next?'下一课':'回到课程首页'}</button></div>`);
+    document.querySelector('[data-action="home"]').addEventListener('click',renderDashboard);
+    document.querySelector('[data-action="continue"]').addEventListener('click',()=>next?startLesson(next):renderDashboard());
+  }
+  function updateStreak() {
+    const today=new Date().toISOString().slice(0,10); if(saved.lastDay&&saved.lastDay!==today){const diff=(new Date(today)-new Date(saved.lastDay))/86400000;saved.streak=diff===1?saved.streak+1:1} saved.lastDay=today;
+  }
+
+  function startReview() {
+    state.review=true; state.reviewItems=shuffle(saved.wrong).slice(0,Math.min(10,saved.wrong.length));state.step=0;state.score=0;state.total=state.reviewItems.length;showLesson();renderReview();
+  }
+  function renderReview() {
+    const total=state.reviewItems.length+1; updateLessonProgress(total);
+    if(state.step>=state.reviewItems.length){
+      shell('复习完成','今天的错题复习结束',`答对 ${state.score} / ${state.total}。答对的题已经从错题本移除。`,`<div class="summary"><div class="summary-icon">🧠</div><div class="score-ring">${state.total?Math.round(state.score/state.total*100):100}%</div></div>`,`<div class="stage-actions"><button class="primary-btn" data-action="home">回到课程地图</button></div>`);document.querySelector('[data-action="home"]').addEventListener('click',renderDashboard);return;
+    }
+    const item=state.reviewItems[state.step];
+    if(item.type==='order') return renderReviewOrder(item);
+    shell(`错题复习 ${state.step+1}/${state.reviewItems.length}`,'再试一次',item.prompt,`${item.speak?`<button class="sound-main" data-speak="${escapeHtml(item.speak)}">${soundSvg()}</button>`:''}<div class="answers" id="answersBox"></div>`,'');bindSpeak();
+    renderChoices(item.choices,item.answer,item.note,ok=>{if(ok){state.score++;saved.wrong=saved.wrong.filter(w=>w.key!==item.key);persist()}});
+  }
+  function renderReviewOrder(item) {
+    const selected=[]; shell(`错题复习 ${state.step+1}/${state.reviewItems.length}`,'重新排列词块',item.prompt,`<div class="sentence-line" id="sentenceLine"></div><div class="token-bank" id="tokenBank"></div><div class="order-tools"><button class="secondary-btn" id="clearOrder">清空</button><button class="check-btn" id="checkOrder" disabled>检查</button></div>`,'');
+    shuffle(item.tokens.map((text,id)=>({text,id}))).forEach(token=>{const b=document.createElement('button');b.className='token';b.textContent=token.text;b.dataset.id=token.id;b.addEventListener('click',()=>{selected.push(token);b.classList.add('used');draw()});$('tokenBank').appendChild(b)});
+    function draw(){$('sentenceLine').innerHTML='';selected.forEach((t,i)=>{const b=document.createElement('button');b.className='token';b.textContent=t.text;b.addEventListener('click',()=>{selected.splice(i,1);document.querySelector(`#tokenBank [data-id="${t.id}"]`).classList.remove('used');draw()});$('sentenceLine').appendChild(b)});$('checkOrder').disabled=selected.length!==item.tokens.length}
+    $('clearOrder').addEventListener('click',()=>{selected.splice(0);document.querySelectorAll('#tokenBank .token').forEach(b=>b.classList.remove('used'));draw()});$('checkOrder').addEventListener('click',()=>{const ok=selected.map(x=>x.text).join(' ')===item.answer;if(ok){state.score++;saved.wrong=saved.wrong.filter(w=>w.key!==item.key);persist()}document.querySelectorAll('.token,#clearOrder,#checkOrder').forEach(b=>b.disabled=true);$('lessonStage').insertAdjacentHTML('beforeend',`<div class="feedback ${ok?'good':'bad'}"><div><strong>${ok?'语序正确':'正确句子：'+escapeHtml(item.answer)}</strong><small>${escapeHtml(item.note)}</small></div><button class="primary-btn" data-action="next"><span>继续</span></button></div>`);document.querySelector('[data-action="next"]').addEventListener('click',()=>{state.step++;renderReview()})});
+  }
+
+  function registerModelTools() {
+    const context=document.modelContext;if(!context?.registerTool)return;const lifecycle=new AbortController();
+    const register=tool=>{try{Promise.resolve(context.registerTool(tool,{signal:lifecycle.signal})).catch(()=>{})}catch(_){}};
+    register({name:'read_spanish_course_progress',title:'读取西语课程进度',description:'读取 Penny 的 A1 课程进度、下一课和错题数量，不修改数据。',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true,untrustedContentHint:false},execute(){const next=nextLesson();return{completed:Object.keys(saved.completed).length,total:allLessons.length,next_lesson:next.title,review_count:saved.wrong.length,xp:saved.xp}}});
+    register({name:'start_next_spanish_lesson',title:'开始下一节西语课',description:'在页面上打开课程路线中的下一节 A1 微课。',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:false},execute(){const next=nextLesson();startLesson(next);return{lesson:next.title,objective:next.canDo}}});
+  }
+
+  $('continueBtn').addEventListener('click',()=>startLesson(nextLesson()));
+  $('reviewBtn').addEventListener('click',startReview);
+  $('homeBtn').addEventListener('click',renderDashboard);
+  $('closeLesson').addEventListener('click',renderDashboard);
+  renderDashboard(); registerModelTools();
+})();
+  </script>
 
 </body>
 </html>
